@@ -7,9 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		45494730C59114630B40811C /* Pods_Plantly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0055AD4B31B3AC2F502F494 /* Pods_Plantly.framework */; };
+		4E8271ABA81B87B300901BCC /* Pods_Plantly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ADD35217838BE7CEF68106A /* Pods_Plantly.framework */; };
+		D11BE354243C47A10067C328 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D1EA05C6243C46A700132048 /* libsqlite3.tbd */; };
+		D11BE355243C47A80067C328 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D1EA05C7243C46B000132048 /* libz.tbd */; };
+		D11BE356243C47B00067C328 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D1EA05C8243C46B900132048 /* libc++.tbd */; };
+		D11BE358243C51E20067C328 /* PlantCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11BE357243C51E20067C328 /* PlantCollectionViewCell.swift */; };
+		D11BE35A243CFCEE0067C328 /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11BE359243CFCEE0067C328 /* Plant.swift */; };
 		D141ED512414A13700DFE4C2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D141ED502414A13600DFE4C2 /* GoogleService-Info.plist */; };
-		D141ED532414AC9200DFE4C2 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D141ED522414AC9200DFE4C2 /* CameraViewController.swift */; };
+		D141ED532414AC9200DFE4C2 /* JournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D141ED522414AC9200DFE4C2 /* JournalViewController.swift */; };
 		D18826D1241225660057CF8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18826D0241225660057CF8A /* AppDelegate.swift */; };
 		D18826D3241225660057CF8A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18826D2241225660057CF8A /* SceneDelegate.swift */; };
 		D18826D8241225660057CF8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D18826D6241225660057CF8A /* Main.storyboard */; };
@@ -18,14 +23,21 @@
 		D18826E02412256C0057CF8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D18826DE2412256C0057CF8A /* LaunchScreen.storyboard */; };
 		D18826E824122C820057CF8A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18826E724122C820057CF8A /* LoginViewController.swift */; };
 		D18826EA24122C8F0057CF8A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18826E924122C8F0057CF8A /* SignUpViewController.swift */; };
+		D18C1F5F243C303F006E30DD /* AddPlantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18C1F5E243C303F006E30DD /* AddPlantViewController.swift */; };
+		D18C1F61243C304D006E30DD /* AddJournalEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18C1F60243C304C006E30DD /* AddJournalEntryViewController.swift */; };
 		D19ED86F241573D300B649B0 /* Apercu-Font in Resources */ = {isa = PBXBuildFile; fileRef = D19ED86E241573D300B649B0 /* Apercu-Font */; };
+		D19ED8712415A85500B649B0 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19ED8702415A85500B649B0 /* ProfileViewController.swift */; };
+		D1EA05CA243C46BE00132048 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1EA05C9243C46BE00132048 /* StoreKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3C27F3DEB208C270AD25F091 /* Pods-Plantly.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plantly.release.xcconfig"; path = "Target Support Files/Pods-Plantly/Pods-Plantly.release.xcconfig"; sourceTree = "<group>"; };
-		D0055AD4B31B3AC2F502F494 /* Pods_Plantly.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Plantly.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1994F4253533A971225A3878 /* Pods-Plantly.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plantly.release.xcconfig"; path = "Target Support Files/Pods-Plantly/Pods-Plantly.release.xcconfig"; sourceTree = "<group>"; };
+		4F8BF429CE4BA7A9CAD4C0B7 /* Pods-Plantly.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plantly.debug.xcconfig"; path = "Target Support Files/Pods-Plantly/Pods-Plantly.debug.xcconfig"; sourceTree = "<group>"; };
+		9ADD35217838BE7CEF68106A /* Pods_Plantly.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Plantly.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D11BE357243C51E20067C328 /* PlantCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantCollectionViewCell.swift; sourceTree = "<group>"; };
+		D11BE359243CFCEE0067C328 /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
 		D141ED502414A13600DFE4C2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		D141ED522414AC9200DFE4C2 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		D141ED522414AC9200DFE4C2 /* JournalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewController.swift; sourceTree = "<group>"; };
 		D18826CD241225650057CF8A /* Plantly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Plantly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D18826D0241225660057CF8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D18826D2241225660057CF8A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -36,8 +48,14 @@
 		D18826E12412256C0057CF8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D18826E724122C820057CF8A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D18826E924122C8F0057CF8A /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		D18C1F5E243C303F006E30DD /* AddPlantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlantViewController.swift; sourceTree = "<group>"; };
+		D18C1F60243C304C006E30DD /* AddJournalEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJournalEntryViewController.swift; sourceTree = "<group>"; };
 		D19ED86E241573D300B649B0 /* Apercu-Font */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Apercu-Font"; sourceTree = "<group>"; };
-		EBDE81EBF33B05266EF1EE74 /* Pods-Plantly.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plantly.debug.xcconfig"; path = "Target Support Files/Pods-Plantly/Pods-Plantly.debug.xcconfig"; sourceTree = "<group>"; };
+		D19ED8702415A85500B649B0 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		D1EA05C6243C46A700132048 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		D1EA05C7243C46B000132048 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		D1EA05C8243C46B900132048 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		D1EA05C9243C46BE00132048 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,7 +63,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45494730C59114630B40811C /* Pods_Plantly.framework in Frameworks */,
+				D11BE354243C47A10067C328 /* libsqlite3.tbd in Frameworks */,
+				D11BE356243C47B00067C328 /* libc++.tbd in Frameworks */,
+				D11BE355243C47A80067C328 /* libz.tbd in Frameworks */,
+				D1EA05CA243C46BE00132048 /* StoreKit.framework in Frameworks */,
+				4E8271ABA81B87B300901BCC /* Pods_Plantly.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,7 +77,11 @@
 		1FAB69258213273B9C4A9A8E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D0055AD4B31B3AC2F502F494 /* Pods_Plantly.framework */,
+				D1EA05C9243C46BE00132048 /* StoreKit.framework */,
+				D1EA05C8243C46B900132048 /* libc++.tbd */,
+				D1EA05C7243C46B000132048 /* libz.tbd */,
+				D1EA05C6243C46A700132048 /* libsqlite3.tbd */,
+				9ADD35217838BE7CEF68106A /* Pods_Plantly.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -63,8 +89,8 @@
 		BB45DF3204BD6B6D0F75959C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				EBDE81EBF33B05266EF1EE74 /* Pods-Plantly.debug.xcconfig */,
-				3C27F3DEB208C270AD25F091 /* Pods-Plantly.release.xcconfig */,
+				4F8BF429CE4BA7A9CAD4C0B7 /* Pods-Plantly.debug.xcconfig */,
+				1994F4253533A971225A3878 /* Pods-Plantly.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -92,9 +118,14 @@
 			isa = PBXGroup;
 			children = (
 				D18826D0241225660057CF8A /* AppDelegate.swift */,
+				D11BE359243CFCEE0067C328 /* Plant.swift */,
+				D11BE357243C51E20067C328 /* PlantCollectionViewCell.swift */,
 				D18826D2241225660057CF8A /* SceneDelegate.swift */,
 				D18826E724122C820057CF8A /* LoginViewController.swift */,
-				D141ED522414AC9200DFE4C2 /* CameraViewController.swift */,
+				D19ED8702415A85500B649B0 /* ProfileViewController.swift */,
+				D18C1F60243C304C006E30DD /* AddJournalEntryViewController.swift */,
+				D18C1F5E243C303F006E30DD /* AddPlantViewController.swift */,
+				D141ED522414AC9200DFE4C2 /* JournalViewController.swift */,
 				D18826E924122C8F0057CF8A /* SignUpViewController.swift */,
 				D18826D6241225660057CF8A /* Main.storyboard */,
 				D18826DC2412256C0057CF8A /* Assets.xcassets */,
@@ -113,11 +144,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D18826E42412256C0057CF8A /* Build configuration list for PBXNativeTarget "Plantly" */;
 			buildPhases = (
-				FBDEC36E6627D3F9C35A45E9 /* [CP] Check Pods Manifest.lock */,
+				B1CE6DEDA448C371EB79C6F8 /* [CP] Check Pods Manifest.lock */,
 				D18826C9241225650057CF8A /* Sources */,
 				D18826CA241225650057CF8A /* Frameworks */,
 				D18826CB241225650057CF8A /* Resources */,
-				C73BC9857361AAB1BEAAB69A /* [CP] Embed Pods Frameworks */,
+				B2504CA88D066A1281071EAF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -177,24 +208,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		C73BC9857361AAB1BEAAB69A /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Plantly/Pods-Plantly-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Plantly/Pods-Plantly-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Plantly/Pods-Plantly-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FBDEC36E6627D3F9C35A45E9 /* [CP] Check Pods Manifest.lock */ = {
+		B1CE6DEDA448C371EB79C6F8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -216,6 +230,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B2504CA88D066A1281071EAF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Plantly/Pods-Plantly-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Plantly/Pods-Plantly-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Plantly/Pods-Plantly-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -223,12 +254,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D11BE358243C51E20067C328 /* PlantCollectionViewCell.swift in Sources */,
 				D18826EA24122C8F0057CF8A /* SignUpViewController.swift in Sources */,
 				D18826DB241225660057CF8A /* Plantly.xcdatamodeld in Sources */,
+				D11BE35A243CFCEE0067C328 /* Plant.swift in Sources */,
 				D18826D1241225660057CF8A /* AppDelegate.swift in Sources */,
 				D18826E824122C820057CF8A /* LoginViewController.swift in Sources */,
+				D19ED8712415A85500B649B0 /* ProfileViewController.swift in Sources */,
+				D18C1F61243C304D006E30DD /* AddJournalEntryViewController.swift in Sources */,
 				D18826D3241225660057CF8A /* SceneDelegate.swift in Sources */,
-				D141ED532414AC9200DFE4C2 /* CameraViewController.swift in Sources */,
+				D18C1F5F243C303F006E30DD /* AddPlantViewController.swift in Sources */,
+				D141ED532414AC9200DFE4C2 /* JournalViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,7 +406,7 @@
 		};
 		D18826E52412256C0057CF8A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EBDE81EBF33B05266EF1EE74 /* Pods-Plantly.debug.xcconfig */;
+			baseConfigurationReference = 4F8BF429CE4BA7A9CAD4C0B7 /* Pods-Plantly.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -389,7 +425,7 @@
 		};
 		D18826E62412256C0057CF8A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3C27F3DEB208C270AD25F091 /* Pods-Plantly.release.xcconfig */;
+			baseConfigurationReference = 1994F4253533A971225A3878 /* Pods-Plantly.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

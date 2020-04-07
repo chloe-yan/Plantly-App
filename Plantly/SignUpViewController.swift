@@ -13,6 +13,8 @@ import FirebaseFirestore
 
 class SignUpViewController: UIViewController, UITextFieldDelegate {
 
+    // MARK: - OUTLETS & ACTIONS
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailLabel: UILabel!
@@ -30,6 +32,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordTextFieldCenterConstraint: NSLayoutConstraint!
     @IBOutlet weak var confirmPasswordTextFieldCenterConstraint: NSLayoutConstraint!
     @IBOutlet weak var signUpButtonCenterConstraint: NSLayoutConstraint!
+    
     @IBAction func signUpButtonTapped(_ sender: Any) {
         let error = validateFields()
         if error != nil {
@@ -43,12 +46,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
                 // Check for errors
                 if err != nil {
-                    // There was an error
+                    // Error occurred
                     self.errorLabel.text = "Error creating user"
                     self.errorLabel.isHidden = false
                 }
                 else {
-                    // User was created
+                    // User is created
                     let database = Firestore.firestore()
                     database.collection("users").addDocument(data: ["name": name, "uid": result!.user.uid]) { (error) in
                         if error != nil {
@@ -56,15 +59,158 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                             self.errorLabel.isHidden = false
                         }
                     }
-                    // Transition to home screen
+                    // Transitions to home screen
                     UserDefaults.standard.set(true, forKey: "status")
-                    let cameraVC = self.storyboard?.instantiateViewController(identifier: "cameraVC") as? CameraViewController
-                    self.view.window?.rootViewController = cameraVC
+                    let jVC = self.storyboard?.instantiateViewController(identifier: "jVC") as? JournalViewController
+                    self.view.window?.rootViewController = jVC
                     self.view.window?.makeKeyAndVisible()
                 }
             }
         }
     }
+    
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        print("Cancel button tapped!")
+    }
+    
+    @IBAction func nameTextFieldBeginEditing(_ sender: Any) {
+        nameLabel.isHidden = false
+        nameTextField.placeholder = ""
+        nameTextField.underlinedSignUp(color: UIColor.systemBlue, type: "name")
+    }
+    
+    @IBAction func nameTextFieldEndEditing(_ sender: Any) {
+        nameLabel.isHidden = true
+        nameTextField.placeholder = "Name"
+        nameTextField.underlinedSignUp(color: UIColor.systemGray, type: "name")
+    }
+    
+    @IBAction func emailTextFieldBeginEditing(_ sender: Any) {
+        emailLabel.isHidden = false
+        emailTextField.placeholder = ""
+        emailTextField.underlinedSignUp(color: UIColor.systemBlue, type: "email")
+    }
+    
+    @IBAction func emailTextFieldEndEditing(_ sender: Any) {
+        emailLabel.isHidden = true
+        emailTextField.placeholder = "Email"
+        emailTextField.underlinedSignUp(color: UIColor.systemGray, type: "email")
+    }
+    
+    @IBAction func passwordTextFieldBeginEditing(_ sender: Any) {
+        passwordLabel.isHidden = false
+        passwordTextField.placeholder = ""
+        passwordTextField.underlinedSignUp(color: UIColor.systemBlue, type: "password")
+    }
+    
+    @IBAction func passwordTextFieldEndEditing(_ sender: Any) {
+        passwordLabel.isHidden = true
+        passwordTextField.placeholder = "Password"
+        passwordTextField.underlinedSignUp(color: UIColor.systemGray, type: "password")
+    }
+    
+    @IBAction func confirmPasswordTextFieldBeginEditing(_ sender: Any) {
+        confirmPasswordLabel.isHidden = false
+        confirmPasswordTextField.placeholder = ""
+        confirmPasswordTextField.underlinedSignUp(color: UIColor.systemBlue, type: "confirm password")
+    }
+    
+    @IBAction func confirmPasswordTextFieldEndEditing(_ sender: Any) {
+        confirmPasswordLabel.isHidden = true
+        confirmPasswordTextField.placeholder = "Confirm password"
+        confirmPasswordTextField.underlinedSignUp(color: UIColor.systemGray, type: "confirm password")
+    }
+    
+    
+    // MARK: - PAGE SETUP
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        nameTextField.delegate = self
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        confirmPasswordTextField.delegate = self
+        nameLabel.isHidden = true
+        emailLabel.isHidden = true
+        passwordLabel.isHidden = true
+        confirmPasswordLabel.isHidden = true
+        errorLabel.isHidden = true
+        nameTextField.attributedPlaceholder = NSAttributedString(string: "Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        emailTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        confirmPasswordTextField.attributedPlaceholder = NSAttributedString(string: "Confirm password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        nameTextField.createUnderlinedName()
+        emailTextField.createUnderlinedEmail()
+        passwordTextField.createUnderlinedPassword2()
+        confirmPasswordTextField.createUnderlinedConfirmPassword()
+        signUpButton.layer.cornerRadius = 15
+        cancelButton.transform = self.cancelButton.transform.rotated(by: CGFloat(M_PI_4))
+        setupTextFields()
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        createAccountLabelCenterConstraint.constant = 0
+        UIView.animate(withDuration: 0.8,
+                        delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7,
+                        options: .curveEaseOut,
+                        animations: { [weak self] in
+                        self?.view.layoutIfNeeded()
+        }, completion: nil)
+           
+        nameTextFieldCenterConstraint.constant = 0
+        UIView.animate(withDuration: 0.8,
+                       delay: 0.2, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7,
+                       options: .curveEaseOut,
+                       animations: { [weak self] in
+                       self?.view.layoutIfNeeded()
+        }, completion: nil)
+           
+        emailTextFieldCenterConstraint.constant = 0
+        UIView.animate(withDuration: 0.8,
+                       delay: 0.4, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7,
+                       options: .curveEaseOut,
+                       animations: { [weak self] in
+                       self?.view.layoutIfNeeded()
+        }, completion: nil)
+           
+        passwordTextFieldCenterConstraint.constant = 0
+        UIView.animate(withDuration: 0.8,
+                       delay: 0.6, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7,
+                       options: .curveEaseOut,
+                       animations: { [weak self] in
+                       self?.view.layoutIfNeeded()
+        }, completion: nil)
+        confirmPasswordTextFieldCenterConstraint.constant = 0
+        UIView.animate(withDuration: 0.8,
+                       delay: 0.8, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7,
+                       options: .curveEaseOut,
+                       animations: { [weak self] in
+                       self?.view.layoutIfNeeded()
+        }, completion: nil)
+        signUpButtonCenterConstraint.constant = 0
+        UIView.animate(withDuration: 0.8,
+                       delay: 1, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7,
+                       options: .curveEaseOut,
+                       animations: { [weak self] in
+                       self?.view.layoutIfNeeded()
+        }, completion: nil)
+    }
+       
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        createAccountLabelCenterConstraint.constant -= view.bounds.width
+        nameTextFieldCenterConstraint.constant -= view.bounds.width
+        emailTextFieldCenterConstraint.constant -= view.bounds.width
+        passwordTextFieldCenterConstraint.constant -= view.bounds.width
+        confirmPasswordTextFieldCenterConstraint.constant -= view.bounds.width
+        signUpButtonCenterConstraint.constant -= view.bounds.width
+    }
+    
+    
+    // MARK: - FUNCTIONS
+    
     func validateFields() -> String? {
         if (nameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || confirmPasswordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "") {
             return "Please fill in all fields."
@@ -75,52 +221,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         }
         return nil
     }
-    @IBAction func cancelButtonTapped(_ sender: Any) {
-        print("Cancel button tapped!")
-    }
-    @IBAction func nameTextFieldBeginEditing(_ sender: Any) {
-        nameLabel.isHidden = false
-        nameTextField.placeholder = ""
-        nameTextField.underlinedSignUp(color: UIColor.systemBlue, type: "name")
-    }
-    @IBAction func nameTextFieldEndEditing(_ sender: Any) {
-        nameLabel.isHidden = true
-        nameTextField.placeholder = "Name"
-        nameTextField.underlinedSignUp(color: UIColor.systemGray, type: "name")
-    }
-    @IBAction func emailTextFieldBeginEditing(_ sender: Any) {
-        emailLabel.isHidden = false
-        emailTextField.placeholder = ""
-        emailTextField.underlinedSignUp(color: UIColor.systemBlue, type: "email")
-    }
-    @IBAction func emailTextFieldEndEditing(_ sender: Any) {
-        emailLabel.isHidden = true
-        emailTextField.placeholder = "Email"
-        emailTextField.underlinedSignUp(color: UIColor.systemGray, type: "email")
-    }
-    @IBAction func passwordTextFieldBeginEditing(_ sender: Any) {
-        passwordLabel.isHidden = false
-        passwordTextField.placeholder = ""
-        passwordTextField.underlinedSignUp(color: UIColor.systemBlue, type: "password")
-    }
-    @IBAction func passwordTextFieldEndEditing(_ sender: Any) {
-        print("AJDFKADF")
-        passwordLabel.isHidden = true
-        passwordTextField.placeholder = "Password"
-        passwordTextField.underlinedSignUp(color: UIColor.systemGray, type: "password")
-    }
-    @IBAction func confirmPasswordTextFieldBeginEditing(_ sender: Any) {
-        confirmPasswordLabel.isHidden = false
-        confirmPasswordTextField.placeholder = ""
-        confirmPasswordTextField.underlinedSignUp(color: UIColor.systemBlue, type: "confirm password")
-    }
-    @IBAction func confirmPasswordTextFieldEndEditing(_ sender: Any) {
-        confirmPasswordLabel.isHidden = true
-        confirmPasswordTextField.placeholder = "Confirm password"
-        confirmPasswordTextField.underlinedSignUp(color: UIColor.systemGray, type: "confirm password")
-    }
     
-    // FUNCTIONS
     // Keyboard functionality
     @objc func doneButtonAction() {
         self.view.endEditing(true)
@@ -154,97 +255,18 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
          super.touchesBegan(touches, with: event)
      }
     
-    // VIEWDIDLOAD
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        nameTextField.delegate = self
-        emailTextField.delegate = self
-        passwordTextField.delegate = self
-        confirmPasswordTextField.delegate = self
-        nameLabel.isHidden = true
-        emailLabel.isHidden = true
-        passwordLabel.isHidden = true
-        confirmPasswordLabel.isHidden = true
-        errorLabel.isHidden = true
-        nameTextField.attributedPlaceholder = NSAttributedString(string: "Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        emailTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        confirmPasswordTextField.attributedPlaceholder = NSAttributedString(string: "Confirm password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        nameTextField.createUnderlinedName()
-        emailTextField.createUnderlinedEmail()
-        passwordTextField.createUnderlinedPassword2()
-        confirmPasswordTextField.createUnderlinedConfirmPassword()
-        signUpButton.layer.cornerRadius = 15
-        cancelButton.transform = self.cancelButton.transform.rotated(by: CGFloat(M_PI_4))
-        setupTextFields()
-        
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-           createAccountLabelCenterConstraint.constant = 0
-           UIView.animate(withDuration: 0.8,
-                          delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7,
-                          options: .curveEaseOut,
-                          animations: { [weak self] in
-                           self?.view.layoutIfNeeded()
-             }, completion: nil)
-           
-           nameTextFieldCenterConstraint.constant = 0
-           UIView.animate(withDuration: 0.8,
-                          delay: 0.2, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7,
-                          options: .curveEaseOut,
-                          animations: { [weak self] in
-                           self?.view.layoutIfNeeded()
-             }, completion: nil)
-           
-           emailTextFieldCenterConstraint.constant = 0
-           UIView.animate(withDuration: 0.8,
-                          delay: 0.4, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7,
-                          options: .curveEaseOut,
-                          animations: { [weak self] in
-                           self?.view.layoutIfNeeded()
-             }, completion: nil)
-           
-           passwordTextFieldCenterConstraint.constant = 0
-           UIView.animate(withDuration: 0.8,
-                          delay: 0.6, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7,
-                          options: .curveEaseOut,
-                          animations: { [weak self] in
-                           self?.view.layoutIfNeeded()
-             }, completion: nil)
-            confirmPasswordTextFieldCenterConstraint.constant = 0
-            UIView.animate(withDuration: 0.8,
-                           delay: 0.8, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7,
-                       options: .curveEaseOut,
-                       animations: { [weak self] in
-                        self?.view.layoutIfNeeded()
-            }, completion: nil)
-            signUpButtonCenterConstraint.constant = 0
-            UIView.animate(withDuration: 0.8,
-                           delay: 1, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7,
-                       options: .curveEaseOut,
-                       animations: { [weak self] in
-                        self?.view.layoutIfNeeded()
-                }, completion: nil)
-       }
-       
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        createAccountLabelCenterConstraint.constant -= view.bounds.width
-        nameTextFieldCenterConstraint.constant -= view.bounds.width
-        emailTextFieldCenterConstraint.constant -= view.bounds.width
-        passwordTextFieldCenterConstraint.constant -= view.bounds.width
-        confirmPasswordTextFieldCenterConstraint.constant -= view.bounds.width
-        signUpButtonCenterConstraint.constant -= view.bounds.width
-    }
 }
+
+
+// MARK: - EXTENSION VARIABLES
 
 let borderName = CALayer()
 let borderEmail = CALayer()
 let borderPassword2 = CALayer()
 let borderConfirmPassword = CALayer()
 
+
+// MARK: - EXTENSIONS
 extension UITextField {
     func createUnderlinedName() {
         let width = CGFloat(2.0)
@@ -254,6 +276,7 @@ extension UITextField {
         self.layer.addSublayer(borderName)
         self.layer.masksToBounds = true
     }
+    
     func createUnderlinedEmail() {
         let width = CGFloat(2.0)
         borderEmail.borderColor = UIColor.lightGray.cgColor
@@ -262,6 +285,7 @@ extension UITextField {
         self.layer.addSublayer(borderEmail)
         self.layer.masksToBounds = true
     }
+    
     func createUnderlinedPassword2() {
         let width = CGFloat(2.0)
         borderPassword2.borderColor = UIColor.lightGray.cgColor
@@ -270,6 +294,7 @@ extension UITextField {
         self.layer.addSublayer(borderPassword2)
         self.layer.masksToBounds = true
     }
+    
     func createUnderlinedConfirmPassword() {
         let width = CGFloat(2.0)
         borderConfirmPassword.borderColor = UIColor.lightGray.cgColor
@@ -278,6 +303,7 @@ extension UITextField {
         self.layer.addSublayer(borderConfirmPassword)
         self.layer.masksToBounds = true
     }
+    
     func underlinedSignUp(color: UIColor, type: String) {
         if (type == "name") {
             borderName.borderColor = UIColor.lightGray.cgColor

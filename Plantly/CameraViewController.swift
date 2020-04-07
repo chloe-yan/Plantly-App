@@ -2,7 +2,7 @@
 //  CameraViewController.swift
 //  Plantly
 //
-//  Created by Chloe Yan on 3/7/20.
+//  Created by Chloe Yan on 3/8/20.
 //  Copyright © 2020 Chloe Yan. All rights reserved.
 //
 
@@ -10,9 +10,16 @@ import UIKit
 
 class CameraViewController: UIViewController {
 
+    @IBAction func encyclopediaImageTapped(_ sender: Any) {
+        
+    }
+    @IBAction func profileImageTapped(_ sender: Any) {
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Do any additional setup after loading the view.
     }
     
