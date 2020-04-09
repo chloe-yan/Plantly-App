@@ -8,6 +8,8 @@
 
 import UIKit
 
+var plantName = ""
+
 class AddPlantViewController: UIViewController {
 
     // MARK: - OUTLETS & ACTIONS

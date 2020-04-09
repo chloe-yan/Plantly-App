@@ -35,10 +35,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 self.errorLabel.isHidden = false
             }
             else {
-                UserDefaults.standard.set(true, forKey: "status")
                 let jVC = self.storyboard?.instantiateViewController(identifier: "jVC") as? JournalViewController
                 self.view.window?.rootViewController = jVC
                 self.view.window?.makeKeyAndVisible()
+                let userDefaults = UserDefaults.standard
+                userDefaults.set(true, forKey: "signedin")
+                userDefaults.synchronize()
             }
         }
     }
@@ -93,6 +95,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        let userDefault = UserDefaults.standard
+        if userDefault.bool(forKey: "signedin") {
+            performSegue(withIdentifier: "login", sender: self)
+        }
         welcomeLabelCenterConstraint.constant = 0
         UIView.animate(withDuration: 0.8,
                        delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7,

@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
+import FirebaseFirestore
+import FirebaseDatabase
 
 class ProfileViewController: UIViewController {
     
@@ -26,6 +30,10 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func logOutButtonTapped(_ sender: Any) {
+        try! Auth.auth().signOut()
+        performSegue(withIdentifier: "logout", sender: self)
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(false, forKey: "signedin")
     }
     
     @IBAction func cameraTapRecognized(_ sender: Any) {
@@ -53,14 +61,25 @@ class ProfileViewController: UIViewController {
     
     var imagePicker = UIImagePickerController()
     var plants = Plant.getPlants()
+    let cellScale: CGFloat = 0.2
+    var user: User!
+    let ref = Database.database().reference(withPath: "plants")
     
     
     // MARK: - PAGE SETUP
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addPlantButton.layer.cornerRadius = 35
+        addPlantButton.layer.cornerRadius = 25
         plantCollectionView.dataSource = self
+        let db = Firestore.firestore()
+        // Adding a document
+        db.collection("plants").addDocument(data: ["name": "Brocolli"])
+        // Getting document ID
+        let plantDocument = db.collection("plants").document()
+        // Replacing data
+        plantDocument.setData(["name": "Carrot", "id": plantDocument.documentID])
+        db.collection("plants").document("myid").setData(["name": "test"])
     }
     
     
@@ -97,5 +116,18 @@ extension ProfileViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
+    }
+}
+
+extension ProfileViewController: UIScrollViewDelegate, UICollectionViewDelegate {
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let layout = self.plantCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
+        var offset = targetContentOffset.pointee
+        let index = (offset.x + scrollView.contentInset.left) / cellWidthIncludingSpacing
+        let roundedIndex = round(index)
+        
+        offset = CGPoint(x: roundedIndex * cellWidthIncludingSpacing - scrollView.contentInset.left, y: scrollView.contentInset.top)
+        targetContentOffset.pointee = offset
     }
 }

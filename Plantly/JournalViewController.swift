@@ -12,6 +12,7 @@ class JournalViewController: UIViewController, UIImagePickerControllerDelegate {
 
     // MARK: - OUTLETS & ACTIONS
     
+    @IBOutlet weak var addJournalEntryButton: UIButton!
     @IBOutlet weak var profileImageView: UIImageView!
     
     @IBAction func profileTapRecognized(_ sender: Any) {
@@ -50,7 +51,7 @@ class JournalViewController: UIViewController, UIImagePickerControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        addJournalEntryButton.layer.cornerRadius = 25
     }
     
     

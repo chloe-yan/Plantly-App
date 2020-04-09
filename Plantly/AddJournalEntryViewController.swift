@@ -14,6 +14,23 @@ class AddJournalEntryViewController: UIViewController {
     
     @IBOutlet weak var plantPickerView: UIPickerView!
     @IBOutlet weak var notesTextView: UITextView!
+    @IBAction func takePhotoButtonTapped(_ sender: Any) {
+       /* let cameraAlert = UIAlertController(title: "", message: "Use a picture to detect potential plant nutrient deficiencies and diseases.", preferredStyle: UIAlertController.Style.actionSheet)
+        let openCamera = UIAlertAction(title: "Take a picture", style: .default) { (action: UIAlertAction) in
+            self.getImage(fromSourceType: .camera)
+        }
+        let photoLibrary = UIAlertAction(title: "Photo library", style: .default) { (action: UIAlertAction) in
+            self.getImage(fromSourceType: .photoLibrary)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        cameraAlert.addAction(openCamera)
+        cameraAlert.addAction(photoLibrary)
+        cameraAlert.addAction(cancelAction)
+        self.present(cameraAlert, animated: true, completion: nil)*/
+    }
+    @IBAction func chooseFromLibraryButtonTapped(_ sender: Any) {
+    }
     
     
     // MARK: - PAGE SETUP
