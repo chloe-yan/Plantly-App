@@ -12,6 +12,8 @@ import FirebaseAuth
 import FirebaseFirestore
 import FirebaseDatabase
 
+var reload = true
+
 class ProfileViewController: UIViewController {
     
     // MARK: - OUTLETS & ACTIONS
@@ -20,7 +22,6 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var addPlantButton: UIButton!
     
     @IBAction func journalImageTapped(_ sender: Any) {
-        print("Journal tapped!")
         let jVC = self.storyboard?.instantiateViewController(identifier: "jVC") as? JournalViewController
         self.view.window?.rootViewController = jVC
         self.view.window?.makeKeyAndVisible()
@@ -60,10 +61,8 @@ class ProfileViewController: UIViewController {
     // MARK: - VARIABLES
     
     var imagePicker = UIImagePickerController()
-    var plants = Plant.getPlants()
     let cellScale: CGFloat = 0.2
     var user: User!
-    let ref = Database.database().reference(withPath: "plants")
     
     
     // MARK: - PAGE SETUP
@@ -72,14 +71,10 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         addPlantButton.layer.cornerRadius = 25
         plantCollectionView.dataSource = self
-        let db = Firestore.firestore()
-        // Adding a document
-        db.collection("plants").addDocument(data: ["name": "Brocolli"])
-        // Getting document ID
-        let plantDocument = db.collection("plants").document()
-        // Replacing data
-        plantDocument.setData(["name": "Carrot", "id": plantDocument.documentID])
-        db.collection("plants").document("myid").setData(["name": "test"])
+        if (reload) {
+            Plant.getPlants()
+        }
+        reload = false
     }
     
     
@@ -114,9 +109,17 @@ extension ProfileViewController: UICollectionViewDataSource {
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = PlantDetailViewController()
+        vc.selectedIndex = indexPath.row
+        performSegue(withIdentifier: "detail", sender: self)
+        print("clickkkk")
+    }
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
+    
 }
 
 extension ProfileViewController: UIScrollViewDelegate, UICollectionViewDelegate {

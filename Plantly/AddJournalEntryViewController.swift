@@ -7,8 +7,13 @@
 //
 
 import UIKit
+import FirebaseFirestore
+import Firebase
+
+var plantString = ""
 
 class AddJournalEntryViewController: UIViewController {
+    
 
     // MARK: - OUTLETS & ACTIONS
     
@@ -33,11 +38,20 @@ class AddJournalEntryViewController: UIViewController {
     }
     
     
+    // MARK: - VARIABLES
+    
+    lazy var dataSource = plantString.components(separatedBy: ",")
+    
+    
     // MARK: - PAGE SETUP
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTextFields()
+        plantPickerView.dataSource = self
+        plantPickerView.delegate = self
+        getDataSource()
+        sleep(1)
     }
     
     
@@ -56,5 +70,36 @@ class AddJournalEntryViewController: UIViewController {
         toolbar.sizeToFit()
         notesTextView.inputAccessoryView = toolbar
     }
+    
+    func getDataSource() {
+        let db = Firestore.firestore()
+        let userID = (Auth.auth().currentUser?.uid)!
+        db.collection("users").document(userID).collection("plants").getDocuments { (snapshot, error) in
+            for document in snapshot!.documents {
+                print("ADDING")
+                print((document.get("name")! as! String) + ",")
+                plantString += (document.get("name")! as! String) + ","
+                print("COOL", plantString)
+            }
+        }
+    }
 
+}
+
+
+// MARK: - EXTENSIONS
+
+extension AddJournalEntryViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return dataSource.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return dataSource[row]
+    }
+    
 }

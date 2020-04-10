@@ -656,10 +656,10 @@
             </objects>
             <point key="canvasLocation" x="2504.8000000000002" y="68.7192118226601"/>
         </scene>
-        <!--View Controller-->
+        <!--Plant Detail View Controller-->
         <scene sceneID="kTL-zh-bpB">
             <objects>
-                <viewController id="eHU-Cl-KK8" sceneMemberID="viewController">
+                <viewController id="eHU-Cl-KK8" customClass="PlantDetailViewController" customModule="Plantly" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cN4-cK-mpW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -685,10 +685,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JZV-Ho-PoV"/>
                     </view>
+                    <connections>
+                        <outlet property="plantNameLabel" destination="SG1-QU-Mr3" id="e1s-aK-6dD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b8M-AA-Yzx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="100" y="860.83743842364538"/>
+            <point key="canvasLocation" x="164" y="947"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="6Zu-rK-N6k">
@@ -895,6 +898,7 @@
                         <outlet property="addPlantButton" destination="glX-1G-kdx" id="Y6a-FS-DeC"/>
                         <outlet property="plantCollectionView" destination="DQh-Rf-3gG" id="Z80-0H-sb9"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="logout" modalPresentationStyle="fullScreen" id="4gQ-el-sjJ"/>
+                        <segue destination="eHU-Cl-KK8" kind="presentation" identifier="detail" modalPresentationStyle="fullScreen" id="6vU-lh-S19"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WrH-mD-9eX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -970,6 +974,7 @@
                                     <constraint firstAttribute="width" constant="70" id="lui-Ai-vwN"/>
                                 </constraints>
                                 <connections>
+                                    <action selector="addPlantButtonTapped:" destination="AAP-jG-wsQ" eventType="touchUpInside" id="Jug-fL-PWi"/>
                                     <segue destination="RhS-1v-Jwi" kind="unwind" unwindAction="unwindToProfile:" id="wJi-AH-wxX"/>
                                 </connections>
                             </button>
@@ -1009,7 +1014,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="SIP-aS-shD"/>
+        <segue reference="4gQ-el-sjJ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="BlueCircle" width="1722" height="1713"/>

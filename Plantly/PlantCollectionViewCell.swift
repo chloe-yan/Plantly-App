@@ -23,6 +23,7 @@ class PlantCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    
     func updateUI() {
         if let plant = plant {
             plantImageView.image = plant.image

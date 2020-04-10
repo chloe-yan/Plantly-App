@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseFirestore
 
 var plantName = ""
 
@@ -16,6 +18,28 @@ class AddPlantViewController: UIViewController {
     
     @IBOutlet weak var plantSearchBar: UISearchBar!
     @IBOutlet weak var plantNameTextField: UITextField!
+    @IBAction func addPlantButtonTapped(_ sender: Any) {
+        let db = Firestore.firestore()
+        reload = true
+        // Adding a document
+        let userID = (Auth.auth().currentUser?.uid)!
+        db.collection("users").document(userID).collection("plants").addDocument(data: ["name": plantNameTextField.text, "image": "plant" + String(Int.random(in: 1 ... 4)), "color": Int.random(in: 1 ... 4)]) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
+            }
+        }
+//        db.collection("plants").document("thing").delete()
+//        db.collection("plants").getDocuments { (snapshot, error) in
+//            if error != nil && snapshot != nil {
+//                for document in snapshot!.documents {
+//                    let documentData = document.data()
+//                    print("REE", documentData)
+//                }
+//            }
+//        }
+    }
     
     
     // MARK: - PAGE SETUP
