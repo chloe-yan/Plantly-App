@@ -28,6 +28,7 @@
 		D19ED86F241573D300B649B0 /* Apercu-Font in Resources */ = {isa = PBXBuildFile; fileRef = D19ED86E241573D300B649B0 /* Apercu-Font */; };
 		D19ED8712415A85500B649B0 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19ED8702415A85500B649B0 /* ProfileViewController.swift */; };
 		D1A8BB34243FB1F5008592F5 /* PlantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A8BB33243FB1F5008592F5 /* PlantDetailViewController.swift */; };
+		D1ABB4EF243FF5950094FA73 /* AddJournalEntryNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1ABB4EE243FF5950094FA73 /* AddJournalEntryNotesViewController.swift */; };
 		D1EA05CA243C46BE00132048 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1EA05C9243C46BE00132048 /* StoreKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		D19ED86E241573D300B649B0 /* Apercu-Font */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Apercu-Font"; sourceTree = "<group>"; };
 		D19ED8702415A85500B649B0 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D1A8BB33243FB1F5008592F5 /* PlantDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailViewController.swift; sourceTree = "<group>"; };
+		D1ABB4EE243FF5950094FA73 /* AddJournalEntryNotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJournalEntryNotesViewController.swift; sourceTree = "<group>"; };
 		D1EA05C6243C46A700132048 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		D1EA05C7243C46B000132048 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		D1EA05C8243C46B900132048 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
@@ -127,6 +129,7 @@
 				D18826E724122C820057CF8A /* LoginViewController.swift */,
 				D19ED8702415A85500B649B0 /* ProfileViewController.swift */,
 				D18C1F60243C304C006E30DD /* AddJournalEntryViewController.swift */,
+				D1ABB4EE243FF5950094FA73 /* AddJournalEntryNotesViewController.swift */,
 				D18C1F5E243C303F006E30DD /* AddPlantViewController.swift */,
 				D141ED522414AC9200DFE4C2 /* JournalViewController.swift */,
 				D18826E924122C8F0057CF8A /* SignUpViewController.swift */,
@@ -262,6 +265,7 @@
 				D18826DB241225660057CF8A /* Plantly.xcdatamodeld in Sources */,
 				D11BE35A243CFCEE0067C328 /* Plant.swift in Sources */,
 				D18826D1241225660057CF8A /* AppDelegate.swift in Sources */,
+				D1ABB4EF243FF5950094FA73 /* AddJournalEntryNotesViewController.swift in Sources */,
 				D18826E824122C820057CF8A /* LoginViewController.swift in Sources */,
 				D19ED8712415A85500B649B0 /* ProfileViewController.swift in Sources */,
 				D18C1F61243C304D006E30DD /* AddJournalEntryViewController.swift in Sources */,

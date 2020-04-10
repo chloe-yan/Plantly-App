@@ -11,6 +11,7 @@ import FirebaseFirestore
 import Firebase
 
 var plantString = ""
+var reloadJ = true
 
 class AddJournalEntryViewController: UIViewController {
     
@@ -18,7 +19,6 @@ class AddJournalEntryViewController: UIViewController {
     // MARK: - OUTLETS & ACTIONS
     
     @IBOutlet weak var plantPickerView: UIPickerView!
-    @IBOutlet weak var notesTextView: UITextView!
     @IBAction func takePhotoButtonTapped(_ sender: Any) {
        /* let cameraAlert = UIAlertController(title: "", message: "Use a picture to detect potential plant nutrient deficiencies and diseases.", preferredStyle: UIAlertController.Style.actionSheet)
         let openCamera = UIAlertAction(title: "Take a picture", style: .default) { (action: UIAlertAction) in
@@ -47,39 +47,25 @@ class AddJournalEntryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTextFields()
         plantPickerView.dataSource = self
         plantPickerView.delegate = self
-        getDataSource()
+        if (reloadJ) {
+            getDataSource()
+        }
+        reloadJ = false
         sleep(1)
     }
     
     
     // MARK: - FUNCTIONS
     
-    // Keyboard functionality
-    @objc func doneButtonAction() {
-        self.view.endEditing(true)
-    }
-    
-    func setupTextFields() {
-        let toolbar = UIToolbar(frame: CGRect(origin: .zero, size: .init(width: view.frame.size.width, height: 30)))
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneButtonAction))
-        toolbar.setItems([flexSpace, doneButton], animated: false)
-        toolbar.sizeToFit()
-        notesTextView.inputAccessoryView = toolbar
-    }
-    
     func getDataSource() {
         let db = Firestore.firestore()
         let userID = (Auth.auth().currentUser?.uid)!
         db.collection("users").document(userID).collection("plants").getDocuments { (snapshot, error) in
             for document in snapshot!.documents {
-                print("ADDING")
                 print((document.get("name")! as! String) + ",")
                 plantString += (document.get("name")! as! String) + ","
-                print("COOL", plantString)
             }
         }
     }

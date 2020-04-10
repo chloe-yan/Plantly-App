@@ -21,6 +21,7 @@ class AddPlantViewController: UIViewController {
     @IBAction func addPlantButtonTapped(_ sender: Any) {
         let db = Firestore.firestore()
         reload = true
+        reloadJ = true
         // Adding a document
         let userID = (Auth.auth().currentUser?.uid)!
         db.collection("users").document(userID).collection("plants").addDocument(data: ["name": plantNameTextField.text, "image": "plant" + String(Int.random(in: 1 ... 4)), "color": Int.random(in: 1 ... 4)]) { err in

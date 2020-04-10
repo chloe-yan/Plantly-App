@@ -97,7 +97,7 @@ class ProfileViewController: UIViewController {
 
 // MARK: EXTENSIONS
 
-extension ProfileViewController: UICollectionViewDataSource {
+extension ProfileViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return plants.count
     }
@@ -113,7 +113,6 @@ extension ProfileViewController: UICollectionViewDataSource {
         let vc = PlantDetailViewController()
         vc.selectedIndex = indexPath.row
         performSegue(withIdentifier: "detail", sender: self)
-        print("clickkkk")
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -122,7 +121,7 @@ extension ProfileViewController: UICollectionViewDataSource {
     
 }
 
-extension ProfileViewController: UIScrollViewDelegate, UICollectionViewDelegate {
+extension ProfileViewController: UIScrollViewDelegate {
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         let layout = self.plantCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
         let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
