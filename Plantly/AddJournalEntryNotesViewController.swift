@@ -13,6 +13,7 @@ class AddJournalEntryNotesViewController: UIViewController {
     
     // MARK: - OUTLETS & ACTIONS
     
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var notesTextView: UITextView!
     
     
@@ -20,6 +21,8 @@ class AddJournalEntryNotesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        titleLabel.font = UIFont(name: "Larsseit-Bold", size: 25)
+        notesTextView.font = UIFont(name: "Larsseit-Medium", size: 17)
         setupTextFields()
     }
     

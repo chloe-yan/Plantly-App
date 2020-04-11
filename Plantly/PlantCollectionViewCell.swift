@@ -15,27 +15,28 @@ class PlantCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var plantLabel: UILabel!
     @IBOutlet weak var plantImageView: UIImageView!
-    @IBOutlet weak var backgroundColorView: UIView!
+    @IBOutlet weak var backgroundImageView: UIImageView!
     
     var plant: Plant! {
         didSet {
             self.updateUI()
+
         }
     }
     
-    
     func updateUI() {
+        plantLabel.font = UIFont(name: "Larsseit-Medium", size: 16)
         if let plant = plant {
             plantImageView.image = plant.image
             plantLabel.text = plant.name
-            backgroundColorView.backgroundColor = plant.color
+            backgroundImageView.image = plant.background
         } else {
             plantImageView.image = nil
             plantLabel.text = nil
-            backgroundColorView.backgroundColor = nil
+            backgroundImageView.image = nil
         }
-        backgroundColorView.layer.cornerRadius = 10.0
-        backgroundColorView.layer.masksToBounds = true
+        backgroundImageView.layer.cornerRadius = 10.0
+        backgroundImageView.layer.masksToBounds = true
         plantImageView.layer.cornerRadius = 10.0
         plantImageView.layer.masksToBounds = true
     }

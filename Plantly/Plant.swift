@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import Firebase
+import FirebaseAuth
 import FirebaseFirestore
 
 var plants: [Plant] = []
@@ -18,8 +19,8 @@ class Plant {
     
     // MARK: - INITIALIZE
     
-    init(color: UIColor, image: UIImage, name: String) {
-        self.color = color
+    init(background: UIImage, image: UIImage, name: String) {
+        self.background = background
         self.image = image
         self.name = name
     }
@@ -29,24 +30,23 @@ class Plant {
     
     var name = ""
     var image: UIImage
-    var color: UIColor
+    var background: UIImage
     
     
     // MARK: - FUNCTIONS
 //    db.collection("plants").document("thing").delete()
     
     static func getPlants() {
-        let colors = [UIColor(red: 0.7216, green: 0.9294, blue: 0.8157, alpha: 1.0), UIColor(red: 0.8314, green: 0.9569, blue: 0.7451, alpha: 1.0), UIColor(red: 0.7176, green: 0.9098, blue: 0.7059, alpha: 1.0), UIColor(red: 0.7686, green: 0.9882, blue: 0.902, alpha: 1.0), UIColor(red: 0.8039, green: 1, blue: 0.7765, alpha: 1.0)]
         let db = Firestore.firestore()
         let userID = (Auth.auth().currentUser?.uid)!
         db.collection("plants").document(userID)
         db.collection("users").document(userID).collection("plants").getDocuments { (snapshot, error) in
             for document in snapshot!.documents {
                 let documentData = document.data()
-                let color: Int = document.get("color")! as! Int
+                let background: String = document.get("background")! as! String
                 let image: String = document.get("image")! as! String
                 let name: String = document.get("name")! as! String
-                let updatedData = Plant(color: colors[color], image: UIImage(named: image)!, name: name)
+                let updatedData = Plant(background: UIImage(named: background)!, image: UIImage(named: image)!, name: name)
                 plants.append(updatedData)
             }
         }

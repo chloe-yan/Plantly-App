@@ -9,14 +9,20 @@
 import UIKit
 import Foundation
 
+var selectedIndex: Int = 0
+
 class PlantDetailViewController: UIViewController {
     
     @IBOutlet weak var plantNameLabel: UILabel!
-    var selectedIndex: Int = 0
+    @IBOutlet weak var plantInfoLabel: UILabel!
+    @IBOutlet weak var deleteButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         plantNameLabel.text = plants[selectedIndex].name
+        plantNameLabel.font = UIFont(name: "Larsseit-Bold", size: 25)
+        plantInfoLabel.font = UIFont(name: "Larsseit-Medium", size: 15)
+        deleteButton.titleLabel?.font = UIFont(name: "Larsseit-Bold", size: 16)
     }
 
 }

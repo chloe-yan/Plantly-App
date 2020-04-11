@@ -23,7 +23,10 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>Apercu Pro Light.otf</string>
+		<string>Larsseit.ttf</string>
+		<string>Larsseit-Medium.ttf</string>
 		<string>Apercu Pro Bold.otf</string>
+		<string>Larsseit Bold.ttf</string>
 		<string>Apercu Medium Italic.otf</string>
 		<string>Apercu Pro Regular.otf</string>
 		<string>Apercu Light.otf</string>

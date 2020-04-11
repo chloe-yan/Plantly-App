@@ -18,8 +18,12 @@ class ProfileViewController: UIViewController {
     
     // MARK: - OUTLETS & ACTIONS
     
+    @IBOutlet weak var helloLabel: UILabel!
     @IBOutlet weak var plantCollectionView: UICollectionView!
+    @IBOutlet weak var myPlantsLabel: UILabel!
     @IBOutlet weak var addPlantButton: UIButton!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var logoutButton: UIButton!
     
     @IBAction func journalImageTapped(_ sender: Any) {
         let jVC = self.storyboard?.instantiateViewController(identifier: "jVC") as? JournalViewController
@@ -55,8 +59,22 @@ class ProfileViewController: UIViewController {
     
     @IBAction func unwindToProfile(_ segue:UIStoryboardSegue) {
         // From AddPlantViewController
+        sleep(1)
+        plantCollectionView.reloadData()
+        sleep(1)
     }
     
+    @IBAction func unwindCancelToProfile(_ segue:UIStoryboardSegue) {
+        // From AddPlantViewController
+    }
+    
+    @IBAction func unwindDetailToProfile(_ segue:UIStoryboardSegue) {
+        // From PlantDetailViewController
+    }
+    
+    @IBAction func unwindDeleteToProfile(_ segue:UIStoryboardSegue) {
+        // From PlantDetailViewController
+    }
     
     // MARK: - VARIABLES
     
@@ -71,6 +89,13 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         addPlantButton.layer.cornerRadius = 25
         plantCollectionView.dataSource = self
+        plantCollectionView.delegate = self
+
+        helloLabel.font = UIFont(name: "Larsseit-Medium", size: 25)
+        nameLabel.font = UIFont(name: "Larsseit-Medium", size: 25)
+        myPlantsLabel.font = UIFont(name: "Larsseit-Bold", size: 18)
+        logoutButton.titleLabel!.font = UIFont(name: "Larsseit-Bold", size: 16)
+        addPlantButton.titleLabel!.font = UIFont(name: "Larsseit-Bold", size: 15)
         if (reload) {
             Plant.getPlants()
         }
@@ -102,6 +127,11 @@ extension ProfileViewController: UICollectionViewDataSource, UICollectionViewDel
         return plants.count
     }
     
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedIndex = indexPath.row
+        performSegue(withIdentifier: "detail", sender: self)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = plantCollectionView.dequeueReusableCell(withReuseIdentifier: "PlantCollectionViewCell", for: indexPath) as! PlantCollectionViewCell
         let plant = plants[indexPath.item]
@@ -109,14 +139,12 @@ extension ProfileViewController: UICollectionViewDataSource, UICollectionViewDel
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = PlantDetailViewController()
-        vc.selectedIndex = indexPath.row
-        performSegue(withIdentifier: "detail", sender: self)
-    }
-    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
+    }
+    
+    @IBAction func tap(_ sender:AnyObject){
+        print("ViewController tap() Clicked Item: \(sender.view.tag)")
     }
     
 }

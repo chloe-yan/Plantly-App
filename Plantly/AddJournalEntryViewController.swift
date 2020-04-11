@@ -12,12 +12,18 @@ import Firebase
 
 var plantString = ""
 var reloadJ = true
+var journalPlant = ""
 
 class AddJournalEntryViewController: UIViewController {
     
 
     // MARK: - OUTLETS & ACTIONS
     
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var heading1Label: UILabel!
+    @IBOutlet weak var heading2Label: UILabel!
+    @IBOutlet weak var photoLabel: UILabel!
+    @IBOutlet weak var libraryLabel: UILabel!
     @IBOutlet weak var plantPickerView: UIPickerView!
     @IBAction func takePhotoButtonTapped(_ sender: Any) {
        /* let cameraAlert = UIAlertController(title: "", message: "Use a picture to detect potential plant nutrient deficiencies and diseases.", preferredStyle: UIAlertController.Style.actionSheet)
@@ -36,6 +42,9 @@ class AddJournalEntryViewController: UIViewController {
     }
     @IBAction func chooseFromLibraryButtonTapped(_ sender: Any) {
     }
+    @IBAction func unwindToAddJournalEntry(_ segue:UIStoryboardSegue) {
+        // From AddJournalEntryNotesViewController
+    }
     
     
     // MARK: - VARIABLES
@@ -47,6 +56,12 @@ class AddJournalEntryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        titleLabel.font = UIFont(name: "Larsseit-Bold", size: 25)
+        heading1Label.font = UIFont(name: "Larsseit-Medium", size: 18)
+        heading2Label.font = UIFont(name: "Larsseit-Medium", size: 18)
+        photoLabel.font = UIFont(name: "Larsseit-Medium", size: 17)
+        libraryLabel.font = UIFont(name: "Larsseit-Medium", size: 17)
+
         plantPickerView.dataSource = self
         plantPickerView.delegate = self
         if (reloadJ) {
