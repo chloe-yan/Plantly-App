@@ -12,6 +12,8 @@ import FirebaseAuth
 import FirebaseFirestore
 import FirebaseDatabase
 
+var journalReload = true
+
 class JournalViewController: UIViewController, UIImagePickerControllerDelegate {
 
     
@@ -48,13 +50,14 @@ class JournalViewController: UIViewController, UIImagePickerControllerDelegate {
         // From AddJournalEntryNotesViewController
         let db = Firestore.firestore()
         let userID = (Auth.auth().currentUser?.uid)!
-        db.collection("users").document(userID).collection("journals").addDocument(data: ["name": journalPlant, "background": "background" + String(Int.random(in: 1 ... 4))]) { err in
+        db.collection("users").document(userID).collection("journals").addDocument(data: ["name": journalPlant, "background": "backgroundJ" + String(Int.random(in: 1 ... 4))]) { err in
             if let err = err {
                 print("Error writing document: \(err)")
             } else {
                 print("Document successfully written!")
             }
         }
+        journalReload = true
     }
     
     @IBAction func unwindDetailToJournal(_ segue:UIStoryboardSegue) {
@@ -74,9 +77,13 @@ class JournalViewController: UIViewController, UIImagePickerControllerDelegate {
         addJournalEntryButton.layer.cornerRadius = 25
         titleLabel.font = UIFont(name: "Larsseit-Bold", size: 25)
         addJournalEntryButton.titleLabel!.font = UIFont(name: "Larsseit-Bold", size: 15)
+        journalCollectionView.layer.cornerRadius = 10
         journalCollectionView.dataSource = self
         journalCollectionView.delegate = self
-        Journal.getJournalEntries()
+        if (journalReload) {
+            Journal.getJournalEntries()
+        }
+        journalReload = false
     }
     
     
@@ -124,17 +131,4 @@ extension JournalViewController: UICollectionViewDataSource, UICollectionViewDel
         print("ViewController tap() Clicked Item: \(sender.view.tag)")
     }
     
-}
-
-extension JournalViewController: UIScrollViewDelegate {
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        let layout = self.journalCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
-        var offset = targetContentOffset.pointee
-        let index = (offset.x + scrollView.contentInset.left) / cellWidthIncludingSpacing
-        let roundedIndex = round(index)
-        
-        offset = CGPoint(x: roundedIndex * cellWidthIncludingSpacing - scrollView.contentInset.left, y: scrollView.contentInset.top)
-        targetContentOffset.pointee = offset
-    }
 }

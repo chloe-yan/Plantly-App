@@ -22,27 +22,9 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Apercu Pro Light.otf</string>
 		<string>Larsseit.ttf</string>
 		<string>Larsseit-Medium.ttf</string>
-		<string>Apercu Pro Bold.otf</string>
 		<string>Larsseit Bold.ttf</string>
-		<string>Apercu Medium Italic.otf</string>
-		<string>Apercu Pro Regular.otf</string>
-		<string>Apercu Light.otf</string>
-		<string>Apercu Pro Italic.otf</string>
-		<string>Apercu Regular.otf</string>
-		<string>Apercu Pro Medium Italic.otf</string>
-		<string>Apercu Medium.otf</string>
-		<string>Apercu Light Italic.otf</string>
-		<string>Apercu Pro Light Italic.otf</string>
-		<string>Apercu Mono.otf</string>
-		<string>Apercu Pro Medium.otf</string>
-		<string>Apercu Pro Bold Italic.otf</string>
-		<string>Apercu Bold Italic.otf</string>
-		<string>Apercu Pro Mono.otf</string>
-		<string>Apercu Italic.otf</string>
-		<string>Apercu Bold.otf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

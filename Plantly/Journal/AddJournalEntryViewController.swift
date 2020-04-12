@@ -22,8 +22,6 @@ class AddJournalEntryViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var heading1Label: UILabel!
     @IBOutlet weak var heading2Label: UILabel!
-    @IBOutlet weak var photoLabel: UILabel!
-    @IBOutlet weak var libraryLabel: UILabel!
     @IBOutlet weak var plantPickerView: UIPickerView!
     @IBAction func takePhotoButtonTapped(_ sender: Any) {
        /* let cameraAlert = UIAlertController(title: "", message: "Use a picture to detect potential plant nutrient deficiencies and diseases.", preferredStyle: UIAlertController.Style.actionSheet)
@@ -42,6 +40,9 @@ class AddJournalEntryViewController: UIViewController {
     }
     @IBAction func chooseFromLibraryButtonTapped(_ sender: Any) {
     }
+    @IBAction func nextButtonTapped(_ sender: Any) {
+        //journalPlant = journals[pickerView.selectedRowInComponent(0)]
+    }
     @IBAction func unwindToAddJournalEntry(_ segue:UIStoryboardSegue) {
         // From AddJournalEntryNotesViewController
     }
@@ -57,10 +58,9 @@ class AddJournalEntryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         titleLabel.font = UIFont(name: "Larsseit-Bold", size: 25)
-        heading1Label.font = UIFont(name: "Larsseit-Medium", size: 18)
-        heading2Label.font = UIFont(name: "Larsseit-Medium", size: 18)
-        photoLabel.font = UIFont(name: "Larsseit-Medium", size: 17)
-        libraryLabel.font = UIFont(name: "Larsseit-Medium", size: 17)
+        heading1Label.font = UIFont(name: "Larsseit-Bold", size: 19)
+        heading2Label.font = UIFont(name: "Larsseit-Bold", size: 19)
+        plantPickerView.layer.cornerRadius = 10
 
         plantPickerView.dataSource = self
         plantPickerView.delegate = self
@@ -97,6 +97,20 @@ extension AddJournalEntryViewController: UIPickerViewDelegate, UIPickerViewDataS
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return dataSource.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        var label = UILabel()
+        if let v = view as? UILabel { label = v }
+        label.font = UIFont (name: "Larsseit-Medium", size: 17)
+        label.text =  dataSource[row]
+        label.textAlignment = .center
+        return label
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+    {
+       
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {

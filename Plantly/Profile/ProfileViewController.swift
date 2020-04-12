@@ -149,7 +149,7 @@ extension ProfileViewController: UICollectionViewDataSource, UICollectionViewDel
     
 }
 
-extension ProfileViewController: UIScrollViewDelegate {
+/*extension ProfileViewController: UIScrollViewDelegate {
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         let layout = self.plantCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
         let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
@@ -161,3 +161,4 @@ extension ProfileViewController: UIScrollViewDelegate {
         targetContentOffset.pointee = offset
     }
 }
+*/

@@ -11,5 +11,6 @@ target 'Plantly' do
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
   pod 'Firebase/Database'
+  pod 'SwiftSoup'
 
 end

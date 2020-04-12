@@ -280,6 +280,7 @@ PODS:
     - nanopb/encode (= 0.3.9011)
   - nanopb/decode (0.3.9011)
   - nanopb/encode (0.3.9011)
+  - SwiftSoup (2.3.1)
 
 DEPENDENCIES:
   - Firebase/Analytics
@@ -287,6 +288,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - Firebase/Firestore
+  - SwiftSoup
 
 SPEC REPOS:
   trunk:
@@ -311,6 +313,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - leveldb-library
     - nanopb
+    - SwiftSoup
 
 SPEC CHECKSUMS:
   abseil: 18063d773f5366ff8736a050fe035a28f635fd27
@@ -334,7 +337,8 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 43b8b64263023d4f32caa0b40f4c8bfa3c5f36d8
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
+  SwiftSoup: e5af192bc99be8398d5f93e15ff6a3c80ba81de1
 
-PODFILE CHECKSUM: bcd5fc874204bb41c4a13d5a215c39ff79920b01
+PODFILE CHECKSUM: 291a2e3051091fb1ee00e6f6a2bf233d3bb035db
 
 COCOAPODS: 1.9.1

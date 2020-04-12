@@ -57,6 +57,7 @@ class AddPlantViewController: UIViewController {
         plantNameTextField.font = UIFont(name: "Larsseit-Medium", size: 15)
         addPlantButton.titleLabel?.font = UIFont(name: "Larsseit-Bold", size: 15)
         addPlantButton.layer.cornerRadius = 20
+        plantNameTextField.layer.cornerRadius = 5
         setupTextFields()
         
     }

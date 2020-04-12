@@ -15,6 +15,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 
     // MARK: - OUTLETS & ACTIONS
     
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailLabel: UILabel!
@@ -126,6 +127,18 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        titleLabel.font = UIFont(name: "Larsseit-Bold", size: 27)
+        nameLabel.font = UIFont(name: "Larsseit-Medium", size: 17)
+        emailLabel.font = UIFont(name: "Larsseit-Medium", size: 17)
+        passwordLabel.font = UIFont(name: "Larsseit-Medium", size: 17)
+        confirmPasswordLabel.font = UIFont(name: "Larsseit-Medium", size: 17)
+        nameTextField.font = UIFont(name: "Larsseit-Medium", size: 17)
+        emailTextField.font = UIFont(name: "Larsseit-Medium", size: 17)
+        passwordTextField.font = UIFont(name: "Larsseit-Medium", size: 17)
+        confirmPasswordTextField.font = UIFont(name: "Larsseit-Medium", size: 17)
+        signUpButton.titleLabel!.font = UIFont(name: "Larsseit-Bold", size: 18)
+        errorLabel.font = UIFont(name: "Larsseit-Medium", size: 16)
         
         nameTextField.delegate = self
         emailTextField.delegate = self

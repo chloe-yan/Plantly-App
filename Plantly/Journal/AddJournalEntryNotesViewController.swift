@@ -23,6 +23,7 @@ class AddJournalEntryNotesViewController: UIViewController {
         super.viewDidLoad()
         titleLabel.font = UIFont(name: "Larsseit-Bold", size: 25)
         notesTextView.font = UIFont(name: "Larsseit-Medium", size: 17)
+        notesTextView.layer.cornerRadius = 10
         setupTextFields()
     }
     

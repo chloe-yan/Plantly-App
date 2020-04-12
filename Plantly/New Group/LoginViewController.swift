@@ -14,12 +14,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     // MARK: - OUTLETS & ACTIONS
     
+    @IBOutlet weak var welcomeBackLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var passwordLabel: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var footerLabel: UILabel!
+    @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var welcomeLabelCenterConstraint: NSLayoutConstraint!
     @IBOutlet weak var emailTextFieldCenterConstraint: NSLayoutConstraint!
     @IBOutlet weak var passwordTextFieldCenterConstraint: NSLayoutConstraint!
@@ -79,6 +82,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        welcomeBackLabel.font = UIFont(name: "Larsseit-Bold", size: 27)
+        emailLabel.font = UIFont(name: "Larsseit-Medium", size: 17)
+        passwordLabel.font = UIFont(name: "Larsseit-Medium", size: 17)
+        loginButton.titleLabel!.font = UIFont(name: "Larsseit-Bold", size: 18)
+        errorLabel.font = UIFont(name: "Larsseit-Medium", size: 16)
+        emailTextField.font = UIFont(name: "Larsseit-Medium", size: 17)
+        passwordTextField.font = UIFont(name: "Larsseit-Medium", size: 17)
+        footerLabel.font = UIFont(name: "Larsseit-Medium", size: 17)
+        signUpButton.titleLabel!.font = UIFont(name: "Larsseit-Bold", size: 17)
         
         emailTextField.delegate = self
         passwordTextField.delegate = self
