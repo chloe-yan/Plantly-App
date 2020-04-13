@@ -22,13 +22,14 @@ class AddPlantViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var plantNameTextField: UITextField!
     @IBOutlet weak var addPlantButton: UIButton!
+    @IBOutlet weak var coverUpLabel: UILabel!
     @IBAction func addPlantButtonTapped(_ sender: Any) {
         let db = Firestore.firestore()
         reload = true
         reloadJ = true
         // Adding a document
         let userID = (Auth.auth().currentUser?.uid)!
-        db.collection("users").document(userID).collection("plants").addDocument(data: ["name": plantNameTextField.text, "image": "plant" + String(Int.random(in: 1 ... 4)), "background": "background" + String(Int.random(in: 1 ... 4))]) { err in
+        db.collection("users").document(userID).collection("plants").document(plantNameTextField.text!).setData(["name": plantNameTextField.text, "image": "plant" + String(Int.random(in: 1 ... 4)), "background": "background" + String(Int.random(in: 1 ... 4))]) { err in
             if let err = err {
                 print("Error writing document: \(err)")
             } else {
@@ -58,6 +59,7 @@ class AddPlantViewController: UIViewController {
         addPlantButton.titleLabel?.font = UIFont(name: "Larsseit-Bold", size: 15)
         addPlantButton.layer.cornerRadius = 20
         plantNameTextField.layer.cornerRadius = 5
+        coverUpLabel.layer.cornerRadius = 10
         setupTextFields()
         
     }

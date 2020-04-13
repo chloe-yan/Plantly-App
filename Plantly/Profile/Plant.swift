@@ -35,20 +35,19 @@ class Plant {
     
     // MARK: - FUNCTIONS
 //    db.collection("plants").document("thing").delete()
-    
+
+   
     static func getPlants() {
-        let db = Firestore.firestore()
-        let userID = (Auth.auth().currentUser?.uid)!
-        db.collection("plants").document(userID)
-        db.collection("users").document(userID).collection("plants").getDocuments { (snapshot, error) in
-            for document in snapshot!.documents {
-                let documentData = document.data()
-                let background: String = document.get("background")! as! String
-                let image: String = document.get("image")! as! String
-                let name: String = document.get("name")! as! String
-                let updatedData = Plant(background: UIImage(named: background)!, image: UIImage(named: image)!, name: name)
-                plants.append(updatedData)
-            }
+            let db = Firestore.firestore()
+            //db.collection("plants").document(userID)
+            let userID = (Auth.auth().currentUser?.uid)!
+            db.collection("users").document(userID).collection("plants").getDocuments { (snapshot, error) in
+                for document in snapshot!.documents {
+                    let background: String = document.get("background")! as! String
+                    let image: String = document.get("image")! as! String
+                    let name: String = document.get("name")! as! String
+                    plants.append(Plant(background: UIImage(named: background)!, image: UIImage(named: image)!, name: name))
+                }
         }
     }
     

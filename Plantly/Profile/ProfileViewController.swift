@@ -16,6 +16,7 @@ var reload = true
 
 class ProfileViewController: UIViewController {
     
+    
     // MARK: - OUTLETS & ACTIONS
     
     @IBOutlet weak var helloLabel: UILabel!
@@ -59,9 +60,7 @@ class ProfileViewController: UIViewController {
     
     @IBAction func unwindToProfile(_ segue:UIStoryboardSegue) {
         // From AddPlantViewController
-        sleep(1)
         plantCollectionView.reloadData()
-        sleep(1)
     }
     
     @IBAction func unwindCancelToProfile(_ segue:UIStoryboardSegue) {
@@ -76,10 +75,10 @@ class ProfileViewController: UIViewController {
         // From PlantDetailViewController
     }
     
+    
     // MARK: - VARIABLES
     
     var imagePicker = UIImagePickerController()
-    let cellScale: CGFloat = 0.2
     var user: User!
     
     
@@ -87,10 +86,10 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("WHAT WHY")
         addPlantButton.layer.cornerRadius = 25
         plantCollectionView.dataSource = self
         plantCollectionView.delegate = self
-
         helloLabel.font = UIFont(name: "Larsseit-Medium", size: 25)
         nameLabel.font = UIFont(name: "Larsseit-Medium", size: 25)
         myPlantsLabel.font = UIFont(name: "Larsseit-Bold", size: 18)
@@ -98,12 +97,25 @@ class ProfileViewController: UIViewController {
         addPlantButton.titleLabel!.font = UIFont(name: "Larsseit-Bold", size: 15)
         if (reload) {
             Plant.getPlants()
+            //sleep(10)
+            print(plants)
+            self.plantCollectionView.reloadData()
+            print("HIIIIII")
+            print("LEFT")
+        }
+        if (reload) {
+            //reloadCV()
         }
         reload = false
     }
     
     
     // MARK: - FUNCTIONS
+    
+    func reloadCV() {
+        sleep(2)
+        self.plantCollectionView.reloadData()
+    }
     
     func getImage(fromSourceType sourceType: UIImagePickerController.SourceType) {
         
@@ -148,17 +160,3 @@ extension ProfileViewController: UICollectionViewDataSource, UICollectionViewDel
     }
     
 }
-
-/*extension ProfileViewController: UIScrollViewDelegate {
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        let layout = self.plantCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
-        var offset = targetContentOffset.pointee
-        let index = (offset.x + scrollView.contentInset.left) / cellWidthIncludingSpacing
-        let roundedIndex = round(index)
-        
-        offset = CGPoint(x: roundedIndex * cellWidthIncludingSpacing - scrollView.contentInset.left, y: scrollView.contentInset.top)
-        targetContentOffset.pointee = offset
-    }
-}
-*/
