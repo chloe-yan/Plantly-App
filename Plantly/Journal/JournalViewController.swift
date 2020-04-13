@@ -125,7 +125,7 @@ extension JournalViewController: UICollectionViewDataSource, UICollectionViewDel
     }
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedIndex = indexPath.row
+        selectedIndexJ = indexPath.row
         performSegue(withIdentifier: "journalDetail", sender: self)
     }
     

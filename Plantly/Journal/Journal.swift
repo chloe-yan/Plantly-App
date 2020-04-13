@@ -23,13 +23,13 @@ class Journal {
     
     init(background: UIImage, name: String) {
         self.background = background
-        Journal.name = name
+        self.name = name
     }
     
     
     // MARK: - VARIABLES
     
-    static var name = ""
+    var name = ""
     var background: UIImage
     
     

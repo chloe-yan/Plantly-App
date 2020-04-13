@@ -34,7 +34,7 @@ class JournalCollectionViewCell: UICollectionViewCell {
     func updateUI() {
         nameLabel.font = UIFont(name: "Larsseit-Medium", size: 16)
         if let journal = journal {
-            nameLabel.text = Journal.name
+            nameLabel.text = journal.name
             backgroundImageView.image = journal.background
         } else {
             nameLabel.text = nil

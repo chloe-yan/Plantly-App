@@ -12,12 +12,17 @@ import Firebase
 import FirebaseAuth
 
 
+var selectedIndexJ: Int = 0
+
+
 class JournalDetailViewController: UIViewController {
 
     
     // MARK: - OUTLETS & ACTIONS
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var addNewEntryButton: UIButton!
     
     @IBAction func deleteButtonTapped(_ sender: Any) {
         let db = Firestore.firestore()
@@ -33,12 +38,16 @@ class JournalDetailViewController: UIViewController {
         // From AddJournalEntryNotesViewController
     }
     
+    
     // MARK: - PAGE SETUP
     
     override func viewDidLoad() {
         super.viewDidLoad()
         titleLabel.font = UIFont(name: "Larsseit-Bold", size: 25)
         deleteButton.titleLabel!.font = UIFont(name: "Larsseit-Bold", size: 16)
+        addNewEntryButton.titleLabel!.font = UIFont(name: "Larsseit-Bold", size: 15)
+        addNewEntryButton.layer.cornerRadius = 25
+        titleLabel.text = journals[selectedIndex].name
     }
     
 }

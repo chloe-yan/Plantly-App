@@ -20,17 +20,17 @@ class AddJournalEntryNotesViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var notesTextView: UITextView!
     @IBAction func doneButtonTapped(_ sender: Any) {
-        let db = Firestore.firestore()
-            journalReload = true
-            // Adding a document
-            let userID = (Auth.auth().currentUser?.uid)!
-        db.collection("users").document(userID).collection("journals").document(journalPlant).setData(["name": journalPlant, "background": "backgroundJ"]) { err in
-                if let err = err {
-                    print("Error writing document: \(err)")
-                } else {
-                    print("Document successfully written!")
-                }
-        }
+//        let db = Firestore.firestore()
+//            journalReload = true
+//            // Adding a document
+//        let userID = (Auth.auth().currentUser?.uid)!
+//        db.collection("users").document(userID).collection("journals").document(journalPlant).setData(["name": journalPlant, "background": "backgroundJ"]) { err in
+//                if let err = err {
+//                    print("Error writing document: \(err)")
+//                } else {
+//                    print("Document successfully written!")
+//                }
+//        }
     }
     
     

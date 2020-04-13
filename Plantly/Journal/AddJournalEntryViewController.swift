@@ -29,7 +29,18 @@ class AddJournalEntryViewController: UIViewController, UINavigationControllerDel
     @IBOutlet weak var doneButton: UIButton!
     @IBAction func doneButtonTapped(_ sender: Any) {
         journalPlant = dataSource[plantPickerView.selectedRow(inComponent: 0)]
-        print("JOURNALPLANT", journalPlant)
+        let db = Firestore.firestore()
+        journalReload = true
+        // Adding a document
+        let userID = (Auth.auth().currentUser?.uid)!
+        print("JOURNALPLANT=", journalPlant)
+        db.collection("users").document(userID).collection("journals").document(journalPlant).setData(["name": journalPlant, "background": "backgroundJ" + String(Int.random(in: 1 ... 4))]) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
+            }
+        }
     }
     
     // MARK: - VARIABLES
