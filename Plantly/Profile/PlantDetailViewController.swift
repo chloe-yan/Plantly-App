@@ -27,6 +27,7 @@ class PlantDetailViewController: UIViewController {
     @IBOutlet weak var phTitleLabel: UILabel!
     @IBOutlet weak var pHLabel: UILabel!
     @IBOutlet weak var deleteButton: UIButton!
+    
     @IBAction func deleteButtonTapped(_ sender: Any) {
         let db = Firestore.firestore()
         let userID = (Auth.auth().currentUser?.uid)!
@@ -81,10 +82,10 @@ class PlantDetailViewController: UIViewController {
                 do {
                     html = try String(contentsOf: url)
                 } catch {
-                    // contents could not be loaded
+                    // Unable to load contents
                 }
             } else {
-                // the URL was bad!
+                // Invalid URL
             }
             let doc: Document = try SwiftSoup.parse(html)
             var text: Element = try doc.getElementById("ctl00_ContentPlaceHolder1_lblPhystatment")!

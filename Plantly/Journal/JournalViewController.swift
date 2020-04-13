@@ -12,7 +12,9 @@ import FirebaseAuth
 import FirebaseFirestore
 import FirebaseDatabase
 
+
 var journalReload = true
+
 
 class JournalViewController: UIViewController, UIImagePickerControllerDelegate {
 
@@ -23,6 +25,7 @@ class JournalViewController: UIViewController, UIImagePickerControllerDelegate {
     @IBOutlet weak var addJournalEntryButton: UIButton!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var journalCollectionView: UICollectionView!
+    @IBOutlet weak var noJournalsLabel: UILabel!
     
     @IBAction func profileTapRecognized(_ sender: Any) {
         let pVC = self.storyboard?.instantiateViewController(identifier: "pVC") as? ProfileViewController
@@ -46,21 +49,20 @@ class JournalViewController: UIViewController, UIImagePickerControllerDelegate {
         self.present(cameraAlert, animated: true, completion: nil)
     }
     
-    @IBAction func unwindToJournal(_ segue:UIStoryboardSegue) {
-        // From AddJournalEntryNotesViewController
-        let db = Firestore.firestore()
-        let userID = (Auth.auth().currentUser?.uid)!
-        db.collection("users").document(userID).collection("journals").addDocument(data: ["name": journalPlant, "background": "backgroundJ" + String(Int.random(in: 1 ... 4))]) { err in
-            if let err = err {
-                print("Error writing document: \(err)")
-            } else {
-                print("Document successfully written!")
-            }
-        }
+    @IBAction func unwindBackToJournal(_ segue:UIStoryboardSegue) {
+        // From AddJournalEntryViewController
+    }
+    
+    @IBAction func unwindDoneToJournal(_ segue:UIStoryboardSegue) {
+        // From AddJournalEntryViewController
         journalReload = true
     }
     
     @IBAction func unwindDetailToJournal(_ segue:UIStoryboardSegue) {
+        // From JournalDetailViewController
+    }
+    
+    @IBAction func unwindDeleteDetailToJournal(_ segue:UIStoryboardSegue) {
         // From JournalDetailViewController
     }
     
@@ -77,11 +79,22 @@ class JournalViewController: UIViewController, UIImagePickerControllerDelegate {
         addJournalEntryButton.layer.cornerRadius = 25
         titleLabel.font = UIFont(name: "Larsseit-Bold", size: 25)
         addJournalEntryButton.titleLabel!.font = UIFont(name: "Larsseit-Bold", size: 15)
+        noJournalsLabel.font = UIFont(name: "Larsseit-Medium", size: 17)
+        noJournalsLabel.layer.masksToBounds = true
+        noJournalsLabel.layer.cornerRadius = 10
         journalCollectionView.layer.cornerRadius = 10
         journalCollectionView.dataSource = self
         journalCollectionView.delegate = self
         if (journalReload) {
             Journal.getJournalEntries()
+            print("JOURNALS", journals)
+            journalCollectionView.reloadData()
+            if (journals.isEmpty) {
+                noJournalsLabel.isHidden = false
+            }
+        }
+        if (!journals.isEmpty) {
+            noJournalsLabel.isHidden = true
         }
         journalReload = false
     }

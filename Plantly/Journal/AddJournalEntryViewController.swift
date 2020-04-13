@@ -10,43 +10,27 @@ import UIKit
 import FirebaseFirestore
 import Firebase
 
+
 var plantString = ""
 var reloadJ = true
 var journalPlant = ""
+var journalImage = UIImage()
 
-class AddJournalEntryViewController: UIViewController {
+
+class AddJournalEntryViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
 
     // MARK: - OUTLETS & ACTIONS
     
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var heading1Label: UILabel!
-    @IBOutlet weak var heading2Label: UILabel!
+    @IBOutlet weak var headingLabel: UILabel!
     @IBOutlet weak var plantPickerView: UIPickerView!
-    @IBAction func takePhotoButtonTapped(_ sender: Any) {
-       /* let cameraAlert = UIAlertController(title: "", message: "Use a picture to detect potential plant nutrient deficiencies and diseases.", preferredStyle: UIAlertController.Style.actionSheet)
-        let openCamera = UIAlertAction(title: "Take a picture", style: .default) { (action: UIAlertAction) in
-            self.getImage(fromSourceType: .camera)
-        }
-        let photoLibrary = UIAlertAction(title: "Photo library", style: .default) { (action: UIAlertAction) in
-            self.getImage(fromSourceType: .photoLibrary)
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        cameraAlert.addAction(openCamera)
-        cameraAlert.addAction(photoLibrary)
-        cameraAlert.addAction(cancelAction)
-        self.present(cameraAlert, animated: true, completion: nil)*/
-    }
-    @IBAction func chooseFromLibraryButtonTapped(_ sender: Any) {
-    }
-    @IBAction func nextButtonTapped(_ sender: Any) {
-        //journalPlant = journals[pickerView.selectedRowInComponent(0)]
-    }
-    @IBAction func unwindToAddJournalEntry(_ segue:UIStoryboardSegue) {
-        // From AddJournalEntryNotesViewController
-    }
     
+    @IBOutlet weak var doneButton: UIButton!
+    @IBAction func doneButtonTapped(_ sender: Any) {
+        journalPlant = dataSource[plantPickerView.selectedRow(inComponent: 0)]
+        print("JOURNALPLANT", journalPlant)
+    }
     
     // MARK: - VARIABLES
     
@@ -58,14 +42,22 @@ class AddJournalEntryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         titleLabel.font = UIFont(name: "Larsseit-Bold", size: 25)
-        heading1Label.font = UIFont(name: "Larsseit-Bold", size: 19)
-        heading2Label.font = UIFont(name: "Larsseit-Bold", size: 19)
+        headingLabel.font = UIFont(name: "Larsseit-Bold", size: 19)
         plantPickerView.layer.cornerRadius = 10
 
         plantPickerView.dataSource = self
         plantPickerView.delegate = self
         if (reloadJ) {
             getDataSource()
+            print("DS", dataSource)
+            if (dataSource == [""]) {
+                doneButton.isUserInteractionEnabled = false
+                doneButton.setImage(UIImage(named: "NoPlantsError"), for: .normal)
+            }
+        }
+        if (dataSource != [""]) {
+            doneButton.isUserInteractionEnabled = true
+            doneButton.setImage(UIImage(named: "Done"), for: .normal)
         }
         reloadJ = false
         sleep(1)
@@ -84,9 +76,8 @@ class AddJournalEntryViewController: UIViewController {
             }
         }
     }
-
 }
-
+    
 
 // MARK: - EXTENSIONS
 
@@ -106,11 +97,6 @@ extension AddJournalEntryViewController: UIPickerViewDelegate, UIPickerViewDataS
         label.text =  dataSource[row]
         label.textAlignment = .center
         return label
-    }
-    
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
-    {
-       
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {

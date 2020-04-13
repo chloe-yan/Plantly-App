@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6B1EDC122511D1C26FFA4CAD /* Pods_Plantly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3F1027EF4D227D851EE9B28 /* Pods_Plantly.framework */; };
+		C4E751A37539344C284CF7FE /* Pods_Plantly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D023A9F27FC6238F6318FE6B /* Pods_Plantly.framework */; };
 		D107BA2324404DB1004835B0 /* Larsseit.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D107BA2224404D99004835B0 /* Larsseit.ttf */; };
 		D107BA2524404F7B004835B0 /* Larsseit-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D107BA2424404F7B004835B0 /* Larsseit-Medium.ttf */; };
 		D107BA2724404FA6004835B0 /* Larsseit Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D107BA2624404FA6004835B0 /* Larsseit Bold.ttf */; };
@@ -19,6 +19,7 @@
 		D141ED512414A13700DFE4C2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D141ED502414A13600DFE4C2 /* GoogleService-Info.plist */; };
 		D141ED532414AC9200DFE4C2 /* JournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D141ED522414AC9200DFE4C2 /* JournalViewController.swift */; };
 		D14A9CD82442F20B003F9954 /* JournalUnitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14A9CD72442F20B003F9954 /* JournalUnitViewController.swift */; };
+		D17037212444E0B700936E88 /* AddJournalEntryPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17037202444E0B700936E88 /* AddJournalEntryPhotoViewController.swift */; };
 		D18826D1241225660057CF8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18826D0241225660057CF8A /* AppDelegate.swift */; };
 		D18826D3241225660057CF8A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18826D2241225660057CF8A /* SceneDelegate.swift */; };
 		D18826D8241225660057CF8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D18826D6241225660057CF8A /* Main.storyboard */; };
@@ -35,12 +36,15 @@
 		D1A8BB34243FB1F5008592F5 /* PlantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A8BB33243FB1F5008592F5 /* PlantDetailViewController.swift */; };
 		D1ABB4EF243FF5950094FA73 /* AddJournalEntryNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1ABB4EE243FF5950094FA73 /* AddJournalEntryNotesViewController.swift */; };
 		D1CB20BE2442A03B00B18758 /* JournalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CB20BD2442A03A00B18758 /* JournalDetailViewController.swift */; };
+		D1E288942444337500C11435 /* SegueFromLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E288932444337500C11435 /* SegueFromLeft.swift */; };
+		D1E28896244435B000C11435 /* SegueFromRight.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E28895244435B000C11435 /* SegueFromRight.swift */; };
 		D1EA05CA243C46BE00132048 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1EA05C9243C46BE00132048 /* StoreKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1A7A6A4D9AEFD11D4C600710 /* Pods-Plantly.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plantly.debug.xcconfig"; path = "Target Support Files/Pods-Plantly/Pods-Plantly.debug.xcconfig"; sourceTree = "<group>"; };
-		A3F1027EF4D227D851EE9B28 /* Pods_Plantly.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Plantly.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A1A7582E3A9F71A87EB1933 /* Pods-Plantly.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plantly.release.xcconfig"; path = "Target Support Files/Pods-Plantly/Pods-Plantly.release.xcconfig"; sourceTree = "<group>"; };
+		658DB7D3FB1C95BAE0EB0E27 /* Pods-Plantly.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plantly.debug.xcconfig"; path = "Target Support Files/Pods-Plantly/Pods-Plantly.debug.xcconfig"; sourceTree = "<group>"; };
+		D023A9F27FC6238F6318FE6B /* Pods_Plantly.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Plantly.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D107BA2224404D99004835B0 /* Larsseit.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Larsseit.ttf; path = "../../../../Desktop/Design Assets/Larsseit.ttf"; sourceTree = "<group>"; };
 		D107BA2424404F7B004835B0 /* Larsseit-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Larsseit-Medium.ttf"; path = "../../../../Desktop/Design Assets/Larsseit-Medium.ttf"; sourceTree = "<group>"; };
 		D107BA2624404FA6004835B0 /* Larsseit Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Larsseit Bold.ttf"; path = "../../../../Desktop/Design Assets/Larsseit Bold.ttf"; sourceTree = "<group>"; };
@@ -49,6 +53,7 @@
 		D141ED502414A13600DFE4C2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D141ED522414AC9200DFE4C2 /* JournalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewController.swift; sourceTree = "<group>"; };
 		D14A9CD72442F20B003F9954 /* JournalUnitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalUnitViewController.swift; sourceTree = "<group>"; };
+		D17037202444E0B700936E88 /* AddJournalEntryPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJournalEntryPhotoViewController.swift; sourceTree = "<group>"; };
 		D18826CD241225650057CF8A /* Plantly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Plantly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D18826D0241225660057CF8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D18826D2241225660057CF8A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,11 +73,12 @@
 		D1A8BB33243FB1F5008592F5 /* PlantDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailViewController.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		D1ABB4EE243FF5950094FA73 /* AddJournalEntryNotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJournalEntryNotesViewController.swift; sourceTree = "<group>"; };
 		D1CB20BD2442A03A00B18758 /* JournalDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalDetailViewController.swift; sourceTree = "<group>"; };
+		D1E288932444337500C11435 /* SegueFromLeft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueFromLeft.swift; sourceTree = "<group>"; };
+		D1E28895244435B000C11435 /* SegueFromRight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueFromRight.swift; sourceTree = "<group>"; };
 		D1EA05C6243C46A700132048 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		D1EA05C7243C46B000132048 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		D1EA05C8243C46B900132048 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		D1EA05C9243C46BE00132048 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		EF4C398F0CBF6BA56FF259EF /* Pods-Plantly.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plantly.release.xcconfig"; path = "Target Support Files/Pods-Plantly/Pods-Plantly.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +90,7 @@
 				D11BE356243C47B00067C328 /* libc++.tbd in Frameworks */,
 				D11BE355243C47A80067C328 /* libz.tbd in Frameworks */,
 				D1EA05CA243C46BE00132048 /* StoreKit.framework in Frameworks */,
-				6B1EDC122511D1C26FFA4CAD /* Pods_Plantly.framework in Frameworks */,
+				C4E751A37539344C284CF7FE /* Pods_Plantly.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,7 +104,7 @@
 				D1EA05C8243C46B900132048 /* libc++.tbd */,
 				D1EA05C7243C46B000132048 /* libz.tbd */,
 				D1EA05C6243C46A700132048 /* libsqlite3.tbd */,
-				A3F1027EF4D227D851EE9B28 /* Pods_Plantly.framework */,
+				D023A9F27FC6238F6318FE6B /* Pods_Plantly.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -106,8 +112,8 @@
 		BB45DF3204BD6B6D0F75959C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				1A7A6A4D9AEFD11D4C600710 /* Pods-Plantly.debug.xcconfig */,
-				EF4C398F0CBF6BA56FF259EF /* Pods-Plantly.release.xcconfig */,
+				658DB7D3FB1C95BAE0EB0E27 /* Pods-Plantly.debug.xcconfig */,
+				0A1A7582E3A9F71A87EB1933 /* Pods-Plantly.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -131,6 +137,7 @@
 				D1A206CD24422730008ABC8A /* Journal.swift */,
 				D1A206CB244226EC008ABC8A /* JournalCollectionViewCell.swift */,
 				D18C1F60243C304C006E30DD /* AddJournalEntryViewController.swift */,
+				D17037202444E0B700936E88 /* AddJournalEntryPhotoViewController.swift */,
 				D1ABB4EE243FF5950094FA73 /* AddJournalEntryNotesViewController.swift */,
 				D1CB20BD2442A03A00B18758 /* JournalDetailViewController.swift */,
 				D14A9CD72442F20B003F9954 /* JournalUnitViewController.swift */,
@@ -170,6 +177,8 @@
 			isa = PBXGroup;
 			children = (
 				D18826D0241225660057CF8A /* AppDelegate.swift */,
+				D1E288932444337500C11435 /* SegueFromLeft.swift */,
+				D1E28895244435B000C11435 /* SegueFromRight.swift */,
 				D18826D2241225660057CF8A /* SceneDelegate.swift */,
 				D14A9CDD24430242003F9954 /* Authentication */,
 				D14A9CDB244301DB003F9954 /* Profile */,
@@ -194,11 +203,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D18826E42412256C0057CF8A /* Build configuration list for PBXNativeTarget "Plantly" */;
 			buildPhases = (
-				61630DAAEA46BF9FDE02E7CA /* [CP] Check Pods Manifest.lock */,
+				565BA16C274C141CDFEEC6A8 /* [CP] Check Pods Manifest.lock */,
 				D18826C9241225650057CF8A /* Sources */,
 				D18826CA241225650057CF8A /* Frameworks */,
 				D18826CB241225650057CF8A /* Resources */,
-				60491BD0B36045C8844C133A /* [CP] Embed Pods Frameworks */,
+				3147FB72CCA5B607FCC44DB4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -261,7 +270,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		60491BD0B36045C8844C133A /* [CP] Embed Pods Frameworks */ = {
+		3147FB72CCA5B607FCC44DB4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -278,7 +287,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Plantly/Pods-Plantly-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		61630DAAEA46BF9FDE02E7CA /* [CP] Check Pods Manifest.lock */ = {
+		565BA16C274C141CDFEEC6A8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -307,8 +316,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1E288942444337500C11435 /* SegueFromLeft.swift in Sources */,
 				D1A206CC244226EC008ABC8A /* JournalCollectionViewCell.swift in Sources */,
 				D11BE358243C51E20067C328 /* PlantCollectionViewCell.swift in Sources */,
+				D1E28896244435B000C11435 /* SegueFromRight.swift in Sources */,
 				D18826EA24122C8F0057CF8A /* SignUpViewController.swift in Sources */,
 				D18826DB241225660057CF8A /* Plantly.xcdatamodeld in Sources */,
 				D11BE35A243CFCEE0067C328 /* Plant.swift in Sources */,
@@ -319,6 +330,7 @@
 				D18C1F61243C304D006E30DD /* AddJournalEntryViewController.swift in Sources */,
 				D14A9CD82442F20B003F9954 /* JournalUnitViewController.swift in Sources */,
 				D18826D3241225660057CF8A /* SceneDelegate.swift in Sources */,
+				D17037212444E0B700936E88 /* AddJournalEntryPhotoViewController.swift in Sources */,
 				D1CB20BE2442A03B00B18758 /* JournalDetailViewController.swift in Sources */,
 				D1A206CE24422730008ABC8A /* Journal.swift in Sources */,
 				D18C1F5F243C303F006E30DD /* AddPlantViewController.swift in Sources */,
@@ -465,7 +477,7 @@
 		};
 		D18826E52412256C0057CF8A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1A7A6A4D9AEFD11D4C600710 /* Pods-Plantly.debug.xcconfig */;
+			baseConfigurationReference = 658DB7D3FB1C95BAE0EB0E27 /* Pods-Plantly.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -548,7 +560,7 @@
 		};
 		D18826E62412256C0057CF8A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EF4C398F0CBF6BA56FF259EF /* Pods-Plantly.release.xcconfig */;
+			baseConfigurationReference = 0A1A7582E3A9F71A87EB1933 /* Pods-Plantly.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

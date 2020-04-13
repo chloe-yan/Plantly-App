@@ -9,7 +9,9 @@
 import Foundation
 import UIKit
 
+
 class PlantCollectionViewCell: UICollectionViewCell {
+    
     
     // MARK: - OUTLETS & ACTIONS
     
@@ -17,12 +19,18 @@ class PlantCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var plantImageView: UIImageView!
     @IBOutlet weak var backgroundImageView: UIImageView!
     
+    
+    // MARK: - INITIALIZE
+    
     var plant: Plant! {
         didSet {
             self.updateUI()
 
         }
     }
+    
+    
+    // MARK: - FUNCTIONS
     
     func updateUI() {
         plantLabel.font = UIFont(name: "Larsseit-Medium", size: 16)

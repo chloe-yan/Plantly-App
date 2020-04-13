@@ -12,7 +12,9 @@ import FirebaseAuth
 import FirebaseFirestore
 import FirebaseDatabase
 
+
 var reload = true
+
 
 class ProfileViewController: UIViewController {
     
@@ -25,6 +27,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var addPlantButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var logoutButton: UIButton!
+    @IBOutlet weak var noPlantsImage: UIImageView!
     
     @IBAction func journalImageTapped(_ sender: Any) {
         let jVC = self.storyboard?.instantiateViewController(identifier: "jVC") as? JournalViewController
@@ -86,7 +89,6 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("WHAT WHY")
         addPlantButton.layer.cornerRadius = 25
         plantCollectionView.dataSource = self
         plantCollectionView.delegate = self
@@ -98,11 +100,16 @@ class ProfileViewController: UIViewController {
         if (reload) {
             Plant.getPlants()
             //sleep(10)
-            print(plants)
+            print("PLANTS", plants)
             self.plantCollectionView.reloadData()
-            print("HIIIIII")
-            print("LEFT")
+            if (plants.isEmpty) {
+                noPlantsImage.isHidden = false
+            }
         }
+        if (!plants.isEmpty) {
+            noPlantsImage.isHidden = true
+        }
+        
         if (reload) {
             //reloadCV()
         }
@@ -132,7 +139,7 @@ class ProfileViewController: UIViewController {
 }
 
 
-// MARK: EXTENSIONS
+// MARK: - EXTENSIONS
 
 extension ProfileViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

@@ -34,8 +34,6 @@ class Plant {
     
     
     // MARK: - FUNCTIONS
-//    db.collection("plants").document("thing").delete()
-
    
     static func getPlants() {
             let db = Firestore.firestore()

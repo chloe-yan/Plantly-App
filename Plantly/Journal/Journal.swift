@@ -15,6 +15,7 @@ import FirebaseFirestore
 
 var journals: [Journal] = []
 
+
 class Journal {
     
     
@@ -40,13 +41,14 @@ class Journal {
         db.collection("journals").document(userID)
         db.collection("users").document(userID).collection("journals").getDocuments { (snapshot, error) in
             for document in snapshot!.documents {
-                let documentData = document.data()
                 let background: String = document.get("background")! as! String
-                let image: String = document.get("name")! as! String
+                let name: String = document.get("name")! as! String
                 let updatedData = Journal(background: UIImage(named: background)!, name: name)
                 journals.append(updatedData)
+                print(updatedData)
             }
         }
+        print("PERSEPECTIEJOURNAL", journals)
     }
     
 }

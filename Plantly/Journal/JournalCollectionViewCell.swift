@@ -9,12 +9,17 @@
 import Foundation
 import UIKit
 
+
 class JournalCollectionViewCell: UICollectionViewCell {
     
+    
     // MARK: - OUTLETS & ACTIONS
+    
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
+    
+    // MARK: - INITIALIZE
     
     var journal: Journal! {
         didSet {
@@ -22,6 +27,9 @@ class JournalCollectionViewCell: UICollectionViewCell {
 
         }
     }
+    
+    
+    // MARK: - FUNCTIONS
     
     func updateUI() {
         nameLabel.font = UIFont(name: "Larsseit-Medium", size: 16)

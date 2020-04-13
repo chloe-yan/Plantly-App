@@ -29,23 +29,13 @@ class AddPlantViewController: UIViewController {
         reloadJ = true
         // Adding a document
         let userID = (Auth.auth().currentUser?.uid)!
-        db.collection("users").document(userID).collection("plants").document(plantNameTextField.text!).setData(["name": plantNameTextField.text, "image": "plant" + String(Int.random(in: 1 ... 4)), "background": "background" + String(Int.random(in: 1 ... 4))]) { err in
+        db.collection("users").document(userID).collection("plants").document(plantNameTextField.text!).setData(["name": plantNameTextField.text!, "image": "plant" + String(Int.random(in: 1 ... 4)), "background": "background" + String(Int.random(in: 1 ... 4))]) { err in
             if let err = err {
                 print("Error writing document: \(err)")
             } else {
                 print("Document successfully written!")
             }
         }
-        sleep(1)
-//        db.collection("plants").document("thing").delete()
-//        db.collection("plants").getDocuments { (snapshot, error) in
-//            if error != nil && snapshot != nil {
-//                for document in snapshot!.documents {
-//                    let documentData = document.data()
-//                    print("REE", documentData)
-//                }
-//            }
-//        }
     }
     
     
@@ -54,14 +44,13 @@ class AddPlantViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         titleLabel.font = UIFont(name: "Larsseit-Bold", size: 25)
-        nameLabel.font = UIFont(name: "Larsseit-Medium", size: 18)
-        plantNameTextField.font = UIFont(name: "Larsseit-Medium", size: 15)
+        nameLabel.font = UIFont(name: "Larsseit-Bold", size: 19)
+        plantNameTextField.font = UIFont(name: "Larsseit-Medium", size: 17)
         addPlantButton.titleLabel?.font = UIFont(name: "Larsseit-Bold", size: 15)
         addPlantButton.layer.cornerRadius = 20
         plantNameTextField.layer.cornerRadius = 5
-        coverUpLabel.layer.cornerRadius = 10
+        coverUpLabel.layer.cornerRadius = 5
         setupTextFields()
-        
     }
     
     
