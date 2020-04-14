@@ -43,11 +43,11 @@ class JournalDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        titleLabel.text = journals[selectedIndexJ].name
         titleLabel.font = UIFont(name: "Larsseit-Bold", size: 25)
         deleteButton.titleLabel!.font = UIFont(name: "Larsseit-Bold", size: 16)
         addNewEntryButton.titleLabel!.font = UIFont(name: "Larsseit-Bold", size: 15)
         addNewEntryButton.layer.cornerRadius = 25
-        titleLabel.text = journals[selectedIndex].name
     }
     
 }
