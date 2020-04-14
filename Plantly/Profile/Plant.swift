@@ -36,16 +36,18 @@ class Plant {
     // MARK: - FUNCTIONS
    
     static func getPlants() {
-            let db = Firestore.firestore()
-            //db.collection("plants").document(userID)
-            let userID = (Auth.auth().currentUser?.uid)!
-            db.collection("users").document(userID).collection("plants").getDocuments { (snapshot, error) in
-                for document in snapshot!.documents {
-                    let background: String = document.get("background")! as! String
-                    let image: String = document.get("image")! as! String
-                    let name: String = document.get("name")! as! String
-                    plants.append(Plant(background: UIImage(named: background)!, image: UIImage(named: image)!, name: name))
-                }
+        let db = Firestore.firestore()
+        //db.collection("plants").document(userID)
+        let userID = (Auth.auth().currentUser?.uid)!
+        plants = []
+        db.collection("users").document(userID).collection("plants").getDocuments { (snapshot, error) in
+            for document in snapshot!.documents {
+                NotificationCenter.default.post(name: NSNotification.Name("load"), object: nil)
+                let background: String = document.get("background")! as! String
+                let image: String = document.get("image")! as! String
+                let name: String = document.get("name")! as! String
+                plants.append(Plant(background: UIImage(named: background)!, image: UIImage(named: image)!, name: name))
+            }
         }
     }
     

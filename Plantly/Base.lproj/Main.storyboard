@@ -821,7 +821,7 @@
                                 <state key="normal" image="Done"/>
                                 <connections>
                                     <action selector="doneButtonTapped:" destination="0KK-xc-h54" eventType="touchUpInside" id="Wak-Db-iAN"/>
-                                    <segue destination="LdQ-oj-LRe" kind="unwind" unwindAction="unwindDoneToJournal:" id="kid-Aj-J6a"/>
+                                    <segue destination="epb-2X-K0o" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="UiU-0J-VsC"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a plant" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEX-em-VDA">
@@ -1479,7 +1479,7 @@
                                 </state>
                                 <connections>
                                     <action selector="addPlantButtonTapped:" destination="AAP-jG-wsQ" eventType="touchUpInside" id="Jug-fL-PWi"/>
-                                    <segue destination="RhS-1v-Jwi" kind="unwind" unwindAction="unwindToProfile:" id="wJi-AH-wxX"/>
+                                    <segue destination="fid-ia-xvD" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="Vo0-KY-gD0"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gcn-OV-UIb">
@@ -1534,7 +1534,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="VQ7-uW-TLo"/>
+        <segue reference="Vo0-KY-gD0"/>
+        <segue reference="UiU-0J-VsC"/>
         <segue reference="4gQ-el-sjJ"/>
     </inferredMetricsTieBreakers>
     <resources>

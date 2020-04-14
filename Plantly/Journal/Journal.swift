@@ -38,6 +38,7 @@ class Journal {
     static func getJournalEntries() {
         let db = Firestore.firestore()
         let userID = (Auth.auth().currentUser?.uid)!
+        journals = []
         db.collection("journals").document(userID)
         db.collection("users").document(userID).collection("journals").getDocuments { (snapshot, error) in
             for document in snapshot!.documents {
@@ -45,6 +46,7 @@ class Journal {
                 let name: String = document.get("name")! as! String
                 let updatedData = Journal(background: UIImage(named: background)!, name: name)
                 journals.append(updatedData)
+                NotificationCenter.default.post(name: NSNotification.Name("load"), object: nil)
                 print(updatedData)
             }
         }

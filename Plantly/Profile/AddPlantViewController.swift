@@ -33,6 +33,7 @@ class AddPlantViewController: UIViewController {
             if let err = err {
                 print("Error writing document: \(err)")
             } else {
+                NotificationCenter.default.post(name: NSNotification.Name("load"), object: nil)
                 print("Document successfully written!")
             }
         }

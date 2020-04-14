@@ -39,6 +39,7 @@ class AddJournalEntryViewController: UIViewController, UINavigationControllerDel
                 print("Error writing document: \(err)")
             } else {
                 print("Document successfully written!")
+                NotificationCenter.default.post(name: NSNotification.Name("load"), object: nil)
             }
         }
     }
@@ -55,23 +56,14 @@ class AddJournalEntryViewController: UIViewController, UINavigationControllerDel
         titleLabel.font = UIFont(name: "Larsseit-Bold", size: 25)
         headingLabel.font = UIFont(name: "Larsseit-Bold", size: 19)
         plantPickerView.layer.cornerRadius = 10
-
         plantPickerView.dataSource = self
         plantPickerView.delegate = self
-        if (reloadJ) {
+        
+        //if (reloadJ) {
             getDataSource()
             print("DS", dataSource)
-            if (dataSource == [""]) {
-                doneButton.isUserInteractionEnabled = false
-                doneButton.setImage(UIImage(named: "NoPlantsError"), for: .normal)
-            }
-        }
-        if (dataSource != [""]) {
-            doneButton.isUserInteractionEnabled = true
-            doneButton.setImage(UIImage(named: "Done"), for: .normal)
-        }
+       // }
         reloadJ = false
-        sleep(1)
     }
     
     
@@ -82,8 +74,18 @@ class AddJournalEntryViewController: UIViewController, UINavigationControllerDel
         let userID = (Auth.auth().currentUser?.uid)!
         db.collection("users").document(userID).collection("plants").getDocuments { (snapshot, error) in
             for document in snapshot!.documents {
-                print((document.get("name")! as! String) + ",")
                 plantString += (document.get("name")! as! String) + ","
+                self.dataSource = plantString.components(separatedBy: ",")
+                self.plantPickerView.reloadAllComponents()
+                print(plantString)
+            }
+            if (self.dataSource == [""]) {
+                self.doneButton.isUserInteractionEnabled = false
+                self.doneButton.setImage(UIImage(named: "NoPlantsError"), for: .normal)
+            }
+            if (self.dataSource != [""]) {
+                self.doneButton.isUserInteractionEnabled = true
+                self.doneButton.setImage(UIImage(named: "Done"), for: .normal)
             }
         }
     }

@@ -53,11 +53,6 @@ class JournalViewController: UIViewController, UIImagePickerControllerDelegate {
         // From AddJournalEntryViewController
     }
     
-    @IBAction func unwindDoneToJournal(_ segue:UIStoryboardSegue) {
-        // From AddJournalEntryViewController
-        journalReload = true
-    }
-    
     @IBAction func unwindDetailToJournal(_ segue:UIStoryboardSegue) {
         // From JournalDetailViewController
     }
@@ -76,6 +71,7 @@ class JournalViewController: UIViewController, UIImagePickerControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(loadList(notification:)), name: NSNotification.Name(rawValue: "load"), object: nil)
         addJournalEntryButton.layer.cornerRadius = 25
         titleLabel.font = UIFont(name: "Larsseit-Bold", size: 25)
         addJournalEntryButton.titleLabel!.font = UIFont(name: "Larsseit-Bold", size: 15)
@@ -85,16 +81,9 @@ class JournalViewController: UIViewController, UIImagePickerControllerDelegate {
         journalCollectionView.layer.cornerRadius = 10
         journalCollectionView.dataSource = self
         journalCollectionView.delegate = self
+        noJournalsLabel.isHidden = true
         if (journalReload) {
             Journal.getJournalEntries()
-            print("JOURNALS", journals)
-            journalCollectionView.reloadData()
-            if (journals.isEmpty) {
-                noJournalsLabel.isHidden = false
-            }
-        }
-        if (!journals.isEmpty) {
-            noJournalsLabel.isHidden = true
         }
         journalReload = false
     }
@@ -111,6 +100,16 @@ class JournalViewController: UIViewController, UIImagePickerControllerDelegate {
             imagePicker.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
             imagePicker.sourceType = sourceType
             self.present(imagePicker, animated: true, completion: nil)
+        }
+    }
+    
+    @objc func loadList(notification: NSNotification) {
+        self.journalCollectionView.reloadData()
+        if (journals.isEmpty) {
+            noJournalsLabel.isHidden = false
+        }
+        if (!journals.isEmpty) {
+            noJournalsLabel.isHidden = true
         }
     }
 

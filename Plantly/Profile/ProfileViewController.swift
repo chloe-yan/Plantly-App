@@ -89,6 +89,7 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(loadList(notification:)), name: NSNotification.Name(rawValue: "load"), object: nil)
         addPlantButton.layer.cornerRadius = 25
         plantCollectionView.dataSource = self
         plantCollectionView.delegate = self
@@ -97,32 +98,15 @@ class ProfileViewController: UIViewController {
         myPlantsLabel.font = UIFont(name: "Larsseit-Bold", size: 18)
         logoutButton.titleLabel!.font = UIFont(name: "Larsseit-Bold", size: 16)
         addPlantButton.titleLabel!.font = UIFont(name: "Larsseit-Bold", size: 15)
+        noPlantsImage.isHidden = true
         if (reload) {
             Plant.getPlants()
-            //sleep(10)
-            print("PLANTS", plants)
-            self.plantCollectionView.reloadData()
-            if (plants.isEmpty) {
-                noPlantsImage.isHidden = false
-            }
-        }
-        if (!plants.isEmpty) {
-            noPlantsImage.isHidden = true
-        }
-        
-        if (reload) {
-            //reloadCV()
         }
         reload = false
     }
     
     
     // MARK: - FUNCTIONS
-    
-    func reloadCV() {
-        sleep(2)
-        self.plantCollectionView.reloadData()
-    }
     
     func getImage(fromSourceType sourceType: UIImagePickerController.SourceType) {
         
@@ -133,6 +117,16 @@ class ProfileViewController: UIViewController {
             imagePicker.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
             imagePicker.sourceType = sourceType
             self.present(imagePicker, animated: true, completion: nil)
+        }
+    }
+    
+    @objc func loadList(notification: NSNotification) {
+        self.plantCollectionView.reloadData()
+        if (plants.isEmpty) {
+            noPlantsImage.isHidden = false
+        }
+        if (!plants.isEmpty) {
+            noPlantsImage.isHidden = true
         }
     }
 
