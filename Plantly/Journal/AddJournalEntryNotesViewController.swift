@@ -10,7 +10,9 @@ import UIKit
 import Foundation
 import FirebaseFirestore
 import Firebase
+import FirebaseStorage
 
+var entryReload = true
 
 class AddJournalEntryNotesViewController: UIViewController {
     
@@ -19,18 +21,50 @@ class AddJournalEntryNotesViewController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var notesTextView: UITextView!
+    
     @IBAction func doneButtonTapped(_ sender: Any) {
-//        let db = Firestore.firestore()
-//            journalReload = true
-//            // Adding a document
-//        let userID = (Auth.auth().currentUser?.uid)!
-//        db.collection("users").document(userID).collection("journals").document(journalPlant).setData(["name": journalPlant, "background": "backgroundJ"]) { err in
-//                if let err = err {
-//                    print("Error writing document: \(err)")
-//                } else {
-//                    print("Document successfully written!")
-//                }
-//        }
+        let db = Firestore.firestore()
+        let userID = (Auth.auth().currentUser?.uid)!
+        entryReload = true
+        
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        let unformattedDate = dateFormatter.string(from: date)
+        let entryDate = unformattedDate.replacingOccurrences(of: "/", with: " ")
+        print(entryDate)
+        
+        if(notesTextView.text == nil) {
+            notesTextView.text = " "
+        }
+        
+        let storage = Storage.storage()
+        let storageRef = storage.reference()
+        let data = Data()
+        let plantRef = storageRef.child("images/" + unformattedDate + ".jpg")
+        
+        let uploadTask = plantRef.putData(data, metadata: nil) { (metadata, error) in
+          guard let metadata = metadata else {
+            // Error occurred
+            return
+          }
+          let size = metadata.size
+          plantRef.downloadURL { (url, error) in
+            guard let downloadURL = url else {
+              // Error occurred
+              return
+            }
+          }
+        }
+
+        db.collection("users").document(userID).collection("journals").document(journalPlant).collection("entries").document(entryDate).setData(["color": (Int.random(in: 1 ... 4)), "date": "entryDate", "notes": notesTextView.text!]) { err in
+        if let err = err {
+            print("Error writing document: \(err)")
+        } else {
+            print("Document successfully written!")
+            NotificationCenter.default.post(name: NSNotification.Name("load"), object: nil)
+            }
+        }
     }
     
     

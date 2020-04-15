@@ -8,6 +8,10 @@
 
 import UIKit
 
+
+var journalImage = UIImage()
+
+
 class AddJournalEntryPhotoViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     

@@ -50,7 +50,6 @@ class Journal {
                 print(updatedData)
             }
         }
-        print("PERSEPECTIEJOURNAL", journals)
     }
     
 }

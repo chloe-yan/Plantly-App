@@ -14,7 +14,6 @@ import Firebase
 var plantString = ""
 var reloadJ = true
 var journalPlant = ""
-var journalImage = UIImage()
 
 
 class AddJournalEntryViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
@@ -25,15 +24,13 @@ class AddJournalEntryViewController: UIViewController, UINavigationControllerDel
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var headingLabel: UILabel!
     @IBOutlet weak var plantPickerView: UIPickerView!
-    
     @IBOutlet weak var doneButton: UIButton!
+    
     @IBAction func doneButtonTapped(_ sender: Any) {
         journalPlant = dataSource[plantPickerView.selectedRow(inComponent: 0)]
-        let db = Firestore.firestore()
         journalReload = true
-        // Adding a document
+        let db = Firestore.firestore()
         let userID = (Auth.auth().currentUser?.uid)!
-        print("JOURNALPLANT=", journalPlant)
         db.collection("users").document(userID).collection("journals").document(journalPlant).setData(["name": journalPlant, "background": "backgroundJ" + String(Int.random(in: 1 ... 4))]) { err in
             if let err = err {
                 print("Error writing document: \(err)")
@@ -43,6 +40,7 @@ class AddJournalEntryViewController: UIViewController, UINavigationControllerDel
             }
         }
     }
+    
     
     // MARK: - VARIABLES
     
@@ -58,11 +56,7 @@ class AddJournalEntryViewController: UIViewController, UINavigationControllerDel
         plantPickerView.layer.cornerRadius = 10
         plantPickerView.dataSource = self
         plantPickerView.delegate = self
-        
-        //if (reloadJ) {
-            getDataSource()
-            print("DS", dataSource)
-       // }
+        getDataSource()
         reloadJ = false
     }
     

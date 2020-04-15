@@ -13,6 +13,7 @@ import FirebaseAuth
 
 
 var selectedIndexJ: Int = 0
+var selectedIndexEntry: Int = 0
 
 
 class JournalDetailViewController: UIViewController {
@@ -21,6 +22,8 @@ class JournalDetailViewController: UIViewController {
     // MARK: - OUTLETS & ACTIONS
     
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var entriesCollectionView: UICollectionView!
+    @IBOutlet weak var noEntriesLabel: UILabel!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var addNewEntryButton: UIButton!
     
@@ -48,6 +51,36 @@ class JournalDetailViewController: UIViewController {
         deleteButton.titleLabel!.font = UIFont(name: "Larsseit-Bold", size: 16)
         addNewEntryButton.titleLabel!.font = UIFont(name: "Larsseit-Bold", size: 15)
         addNewEntryButton.layer.cornerRadius = 25
+    }
+    
+}
+
+
+// MARK: - EXTENSIONS
+
+extension JournalDetailViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return entries.count
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedIndexEntry = indexPath.row
+        performSegue(withIdentifier: "entryDetail", sender: self)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = entriesCollectionView.dequeueReusableCell(withReuseIdentifier: "EntryCollectionViewCell", for: indexPath) as! EntryCollectionViewCell
+        let entry = entries[indexPath.item]
+        cell.entry = entry
+        return cell
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    @IBAction func tap(_ sender:AnyObject){
+        print("ViewController tap() Clicked Item: \(sender.view.tag)")
     }
     
 }
