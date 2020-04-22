@@ -50,6 +50,7 @@ class JournalDetailViewController: UIViewController {
         titleLabel.font = UIFont(name: "Larsseit-Bold", size: 25)
         deleteButton.titleLabel!.font = UIFont(name: "Larsseit-Bold", size: 16)
         addNewEntryButton.titleLabel!.font = UIFont(name: "Larsseit-Bold", size: 15)
+        noEntriesLabel.font = UIFont(name: "Larsseit-Medium", size: 17)
         addNewEntryButton.layer.cornerRadius = 25
     }
     

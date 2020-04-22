@@ -112,6 +112,7 @@ class PlantDetailViewController: UIViewController {
             }
             let jpgs: Elements = try doc.select("img[src$=.jpg]")
             let image = "<img src='../user/images/PFAF_Icon/H4.jpg'/>"
+            print("IMAGE", image)
                 //"<img src=\'" + jpgs[4] + "\'/>"
             plantTextView.attributedText = image.htmlToAttributedString
         } catch Exception.Error(type: let type, Message: let message) {
