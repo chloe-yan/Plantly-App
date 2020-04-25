@@ -92,7 +92,6 @@ class JournalViewController: UIViewController, UIImagePickerControllerDelegate, 
             Journal.getJournalEntries()
         }
         journalReload = false
-        print("JOURNALLL", journals)
     }
     
     

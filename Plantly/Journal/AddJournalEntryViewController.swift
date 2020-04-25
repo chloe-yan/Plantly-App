@@ -12,7 +12,6 @@ import Firebase
 
 
 var plantString = ""
-var reloadJ = true
 var journalPlant = ""
 
 
@@ -54,16 +53,18 @@ class AddJournalEntryViewController: UIViewController, UINavigationControllerDel
         titleLabel.font = UIFont(name: "Larsseit-Bold", size: 25)
         headingLabel.font = UIFont(name: "Larsseit-Bold", size: 19)
         plantPickerView.layer.cornerRadius = 10
+        getDataSource()
         plantPickerView.dataSource = self
         plantPickerView.delegate = self
-        getDataSource()
-        reloadJ = false
+        journalReload = false
     }
     
     
     // MARK: - FUNCTIONS
     
     func getDataSource() {
+        dataSource = []
+        plantString = ""
         let db = Firestore.firestore()
         let userID = (Auth.auth().currentUser?.uid)!
         db.collection("users").document(userID).collection("plants").getDocuments { (snapshot, error) in

@@ -14,6 +14,7 @@ import FirebaseDatabase
 
 
 var reload = true
+var animate = true
 
 
 class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -93,6 +94,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        count = 0
+        animate = true
         delay = 0.0
         NotificationCenter.default.addObserver(self, selector: #selector(loadList(notification:)), name: NSNotification.Name(rawValue: "load"), object: nil)
         addPlantButton.layer.cornerRadius = 25
@@ -168,6 +171,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
 
 }
 var delay = 0.0
+var count = 0
 
 
 // MARK: - EXTENSIONS
@@ -186,15 +190,21 @@ extension ProfileViewController: UICollectionViewDataSource, UICollectionViewDel
         let cell = plantCollectionView.dequeueReusableCell(withReuseIdentifier: "PlantCollectionViewCell", for: indexPath) as! PlantCollectionViewCell
         let plant = plants[indexPath.item]
         cell.plant = plant
-        cell.alpha = 0
-        cell.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+        if (animate) {
+            cell.alpha = 0
+            cell.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
 
-        UIView.animate(
-            withDuration: 0.5, delay: TimeInterval(delay), usingSpringWithDamping: 0.55, initialSpringVelocity: 3, options: .curveEaseOut, animations: {
-                cell.transform = .identity
-                cell.alpha = 1
-        }, completion: nil)
-        delay += 0.3
+            UIView.animate(
+                withDuration: 0.5, delay: TimeInterval(delay), usingSpringWithDamping: 0.55, initialSpringVelocity: 3, options: .curveEaseOut, animations: {
+                    cell.transform = .identity
+                    cell.alpha = 1
+            }, completion: nil)
+            delay += 0.3
+        }
+        if (count == plants.count) {
+            animate = false
+        }
+        count += 1
         return cell
     }
     
