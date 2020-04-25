@@ -43,6 +43,7 @@ class EntryCollectionViewCell: UICollectionViewCell {
              dateLabel.text = nil
              colorBackgroundView.backgroundColor = nil
          }
+         colorBackgroundView.contentMode = .scaleToFill
          colorBackgroundView.layer.cornerRadius = 10.0
          colorBackgroundView.layer.masksToBounds = true
      }

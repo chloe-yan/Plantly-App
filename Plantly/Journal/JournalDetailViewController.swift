@@ -54,6 +54,7 @@ class JournalDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        delayEntries = 0.0
         NotificationCenter.default.addObserver(self, selector: #selector(loadList(notification:)), name: NSNotification.Name(rawValue: "load"), object: nil)
         entriesCollectionView.dataSource = self
         entriesCollectionView.delegate = self
@@ -87,11 +88,18 @@ class JournalDetailViewController: UIViewController {
 
 }
 
+var delayEntries = 0.0
+
 // MARK: - EXTENSIONS
 
-extension JournalDetailViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension JournalDetailViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return entries.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 285, height: 70)
     }
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -103,6 +111,16 @@ extension JournalDetailViewController: UICollectionViewDataSource, UICollectionV
         let cell = entriesCollectionView.dequeueReusableCell(withReuseIdentifier: "EntryCollectionViewCell", for: indexPath) as! EntryCollectionViewCell
         let entry = entries[indexPath.item]
         cell.entry = entry
+        cell.alpha = 0
+        cell.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+
+        UIView.animate(
+            withDuration: 0.5, delay: TimeInterval(delayEntries), usingSpringWithDamping: 0.55, initialSpringVelocity: 3, options: .curveEaseOut, animations: {
+                cell.transform = .identity
+                cell.alpha = 1
+        }, completion: nil)
+        
+        delayEntries += 0.3
         return cell
     }
     

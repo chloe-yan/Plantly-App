@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A5AB0738EF70266D978F573 /* Pods_Plantly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BEFA4AE625128EB11870305 /* Pods_Plantly.framework */; };
+		075E5BBF4C1E736C0E198ABD /* Pods_Plantly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 279C963271A1845905FB3E95 /* Pods_Plantly.framework */; };
 		D107BA2324404DB1004835B0 /* Larsseit.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D107BA2224404D99004835B0 /* Larsseit.ttf */; };
 		D107BA2524404F7B004835B0 /* Larsseit-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D107BA2424404F7B004835B0 /* Larsseit-Medium.ttf */; };
 		D107BA2724404FA6004835B0 /* Larsseit Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D107BA2624404FA6004835B0 /* Larsseit Bold.ttf */; };
@@ -48,9 +48,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1BEFA4AE625128EB11870305 /* Pods_Plantly.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Plantly.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		238D27A5997A5C7D206C0DEB /* Pods-Plantly.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plantly.debug.xcconfig"; path = "Target Support Files/Pods-Plantly/Pods-Plantly.debug.xcconfig"; sourceTree = "<group>"; };
-		AF03F957140407D512C48E59 /* Pods-Plantly.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plantly.release.xcconfig"; path = "Target Support Files/Pods-Plantly/Pods-Plantly.release.xcconfig"; sourceTree = "<group>"; };
+		279C963271A1845905FB3E95 /* Pods_Plantly.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Plantly.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BBD781BB050C770FE1BB5CA8 /* Pods-Plantly.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plantly.release.xcconfig"; path = "Target Support Files/Pods-Plantly/Pods-Plantly.release.xcconfig"; sourceTree = "<group>"; };
 		D107BA2224404D99004835B0 /* Larsseit.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Larsseit.ttf; path = "../../../../Desktop/Design Assets/Larsseit.ttf"; sourceTree = "<group>"; };
 		D107BA2424404F7B004835B0 /* Larsseit-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Larsseit-Medium.ttf"; path = "../../../../Desktop/Design Assets/Larsseit-Medium.ttf"; sourceTree = "<group>"; };
 		D107BA2624404FA6004835B0 /* Larsseit Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Larsseit Bold.ttf"; path = "../../../../Desktop/Design Assets/Larsseit Bold.ttf"; sourceTree = "<group>"; };
@@ -91,6 +90,7 @@
 		D1EA05C7243C46B000132048 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		D1EA05C8243C46B900132048 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		D1EA05C9243C46BE00132048 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		F323ACB7F4E0DD00A366FB38 /* Pods-Plantly.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plantly.debug.xcconfig"; path = "Target Support Files/Pods-Plantly/Pods-Plantly.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,7 +102,7 @@
 				D11BE356243C47B00067C328 /* libc++.tbd in Frameworks */,
 				D11BE355243C47A80067C328 /* libz.tbd in Frameworks */,
 				D1EA05CA243C46BE00132048 /* StoreKit.framework in Frameworks */,
-				3A5AB0738EF70266D978F573 /* Pods_Plantly.framework in Frameworks */,
+				075E5BBF4C1E736C0E198ABD /* Pods_Plantly.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,7 +116,7 @@
 				D1EA05C8243C46B900132048 /* libc++.tbd */,
 				D1EA05C7243C46B000132048 /* libz.tbd */,
 				D1EA05C6243C46A700132048 /* libsqlite3.tbd */,
-				1BEFA4AE625128EB11870305 /* Pods_Plantly.framework */,
+				279C963271A1845905FB3E95 /* Pods_Plantly.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -124,8 +124,8 @@
 		BB45DF3204BD6B6D0F75959C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				238D27A5997A5C7D206C0DEB /* Pods-Plantly.debug.xcconfig */,
-				AF03F957140407D512C48E59 /* Pods-Plantly.release.xcconfig */,
+				F323ACB7F4E0DD00A366FB38 /* Pods-Plantly.debug.xcconfig */,
+				BBD781BB050C770FE1BB5CA8 /* Pods-Plantly.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -237,11 +237,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D18826E42412256C0057CF8A /* Build configuration list for PBXNativeTarget "Plantly" */;
 			buildPhases = (
-				57BD21F06826A773BBFB4376 /* [CP] Check Pods Manifest.lock */,
+				6453E7F4F8F3F277F3F5E0C9 /* [CP] Check Pods Manifest.lock */,
 				D18826C9241225650057CF8A /* Sources */,
 				D18826CA241225650057CF8A /* Frameworks */,
 				D18826CB241225650057CF8A /* Resources */,
-				E69E8D175E5788C6D9AAAABF /* [CP] Embed Pods Frameworks */,
+				7049E5CB184E32A7704D7654 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -304,7 +304,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		57BD21F06826A773BBFB4376 /* [CP] Check Pods Manifest.lock */ = {
+		6453E7F4F8F3F277F3F5E0C9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -326,7 +326,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E69E8D175E5788C6D9AAAABF /* [CP] Embed Pods Frameworks */ = {
+		7049E5CB184E32A7704D7654 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -517,7 +517,7 @@
 		};
 		D18826E52412256C0057CF8A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 238D27A5997A5C7D206C0DEB /* Pods-Plantly.debug.xcconfig */;
+			baseConfigurationReference = F323ACB7F4E0DD00A366FB38 /* Pods-Plantly.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -600,7 +600,7 @@
 		};
 		D18826E62412256C0057CF8A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AF03F957140407D512C48E59 /* Pods-Plantly.release.xcconfig */;
+			baseConfigurationReference = BBD781BB050C770FE1BB5CA8 /* Pods-Plantly.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

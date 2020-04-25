@@ -41,7 +41,9 @@ class JournalCollectionViewCell: UICollectionViewCell {
             backgroundImageView.image = nil
         }
         backgroundImageView.layer.cornerRadius = 10.0
+        backgroundImageView.clipsToBounds = true
         backgroundImageView.layer.masksToBounds = true
+
     }
     
 }

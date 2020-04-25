@@ -14,7 +14,7 @@ import CoreLocation
 var reloadMap = true
 
 
-class MapViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class MapViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate {
 
     
     // MARK: - OUTLETS & ACTIONS
@@ -45,7 +45,7 @@ class MapViewController: UIViewController, UIImagePickerControllerDelegate, UINa
     
     var imagePicker: UIImagePickerController!
     var plantImage: UIImage!
-    private let locationManager = CLLocationManager()
+    private var locationManager = CLLocationManager()
     private var currentCoordinate: CLLocationCoordinate2D?
     
     
@@ -56,6 +56,29 @@ class MapViewController: UIViewController, UIImagePickerControllerDelegate, UINa
         mapView.delegate = self
         mapView.layer.cornerRadius = 10
         titleLabel.font = UIFont(name: "Larsseit-Bold", size: 25)
+        let locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+
+        // Check for Location Services
+        if (CLLocationManager.locationServicesEnabled()) {
+            locationManager.requestAlwaysAuthorization()
+            locationManager.requestWhenInUseAuthorization()
+        }
+
+        //Zoom to user location
+        if let userLocation = locationManager.location?.coordinate {
+            let viewRegion = MKCoordinateRegion(center: userLocation, latitudinalMeters: 100000, longitudinalMeters: 100000)
+            mapView.setRegion(viewRegion, animated: false)
+        }
+
+        self.locationManager = locationManager
+
+        DispatchQueue.main.async {
+            self.locationManager.startUpdatingLocation()
+        }
+        mapView.showsUserLocation = true
+        
         NotificationCenter.default.addObserver(self, selector: #selector(loadList(notification:)), name: NSNotification.Name(rawValue: "loadMap"), object: nil)
         Annotation.getAnnotations()
     }

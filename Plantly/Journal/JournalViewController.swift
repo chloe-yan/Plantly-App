@@ -76,6 +76,7 @@ class JournalViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        delayJournal = 0.0
         NotificationCenter.default.addObserver(self, selector: #selector(loadList(notification:)), name: NSNotification.Name(rawValue: "load"), object: nil)
         addJournalEntryButton.layer.cornerRadius = 25
         titleLabel.font = UIFont(name: "Larsseit-Bold", size: 25)
@@ -137,12 +138,17 @@ class JournalViewController: UIViewController, UIImagePickerControllerDelegate, 
 
 }
 
-
+var delayJournal = 0.0
 // MARK: - EXTENSIONS
 
-extension JournalViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension JournalViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return journals.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 285, height: 70)
     }
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -154,6 +160,17 @@ extension JournalViewController: UICollectionViewDataSource, UICollectionViewDel
         let cell = journalCollectionView.dequeueReusableCell(withReuseIdentifier: "JournalCollectionViewCell", for: indexPath) as! JournalCollectionViewCell
         let journal = journals[indexPath.item]
         cell.journal = journal
+        cell.alpha = 0
+        cell.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+
+        UIView.animate(
+            withDuration: 0.5, delay: TimeInterval(delayJournal), usingSpringWithDamping: 0.55, initialSpringVelocity: 3, options: .curveEaseOut, animations: {
+                cell.transform = .identity
+                cell.alpha = 1
+        }, completion: nil)
+        
+        print("DONE")
+        delayJournal += 0.3
         return cell
     }
     

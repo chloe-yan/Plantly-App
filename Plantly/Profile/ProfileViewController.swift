@@ -93,6 +93,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        delay = 0.0
         NotificationCenter.default.addObserver(self, selector: #selector(loadList(notification:)), name: NSNotification.Name(rawValue: "load"), object: nil)
         addPlantButton.layer.cornerRadius = 25
         plantCollectionView.dataSource = self
@@ -103,6 +104,19 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         logoutButton.titleLabel!.font = UIFont(name: "Larsseit-Bold", size: 16)
         addPlantButton.titleLabel!.font = UIFont(name: "Larsseit-Bold", size: 15)
         noPlantsImage.isHidden = true
+        let calendar = Calendar.current
+        let date = Date()
+        let hour = calendar.component(.hour, from: date)
+        helloLabel.text = "Good"
+        if (hour >= 0 && hour < 12) {
+            nameLabel.text = "morning"
+        }
+        else if (hour >= 12 && hour < 17) {
+            nameLabel.text = "afternoon"
+        }
+        else {
+            nameLabel.text = "evening"
+        }
         if (reload || plants.isEmpty) {
             Plant.getPlants()
             print("J RELOADED")
@@ -153,6 +167,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
 
 }
+var delay = 0.0
 
 
 // MARK: - EXTENSIONS
@@ -166,11 +181,20 @@ extension ProfileViewController: UICollectionViewDataSource, UICollectionViewDel
         selectedIndex = indexPath.row
         performSegue(withIdentifier: "detail", sender: self)
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = plantCollectionView.dequeueReusableCell(withReuseIdentifier: "PlantCollectionViewCell", for: indexPath) as! PlantCollectionViewCell
         let plant = plants[indexPath.item]
         cell.plant = plant
+        cell.alpha = 0
+        cell.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+
+        UIView.animate(
+            withDuration: 0.5, delay: TimeInterval(delay), usingSpringWithDamping: 0.55, initialSpringVelocity: 3, options: .curveEaseOut, animations: {
+                cell.transform = .identity
+                cell.alpha = 1
+        }, completion: nil)
+        delay += 0.3
         return cell
     }
     
