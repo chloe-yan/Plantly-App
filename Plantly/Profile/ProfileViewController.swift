@@ -16,7 +16,7 @@ import FirebaseDatabase
 var reload = true
 
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     
     // MARK: - OUTLETS & ACTIONS
@@ -78,11 +78,15 @@ class ProfileViewController: UIViewController {
         // From PlantDetailViewController
     }
     
+    @IBAction func unwindResults(_ segue:UIStoryboardSegue) {
+        // From ResultsViewController
+    }
+    
     
     // MARK: - VARIABLES
     
-    var imagePicker = UIImagePickerController()
-    var user: User!
+    var imagePicker: UIImagePickerController!
+    var plantImage: UIImage!
     
     
     // MARK: - PAGE SETUP
@@ -99,14 +103,24 @@ class ProfileViewController: UIViewController {
         logoutButton.titleLabel!.font = UIFont(name: "Larsseit-Bold", size: 16)
         addPlantButton.titleLabel!.font = UIFont(name: "Larsseit-Bold", size: 15)
         noPlantsImage.isHidden = true
-        if (reload) {
+        if (reload || plants.isEmpty) {
             Plant.getPlants()
+            print("J RELOADED")
         }
         reload = false
+        print("PLANTSSS", plants)
     }
     
     
     // MARK: - FUNCTIONS
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "photoObtainedProfile" {
+            if let vc = segue.destination as? ResultsViewController {
+                vc.image = plantImage
+            }
+        }
+    }
     
     func getImage(fromSourceType sourceType: UIImagePickerController.SourceType) {
         
@@ -120,8 +134,16 @@ class ProfileViewController: UIViewController {
         }
     }
     
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        imagePicker.dismiss(animated: true) {
+            self.performSegue(withIdentifier: "photoObtainedProfile", sender: nil)
+        }
+        plantImage = info[.originalImage] as? UIImage
+    }
+    
     @objc func loadList(notification: NSNotification) {
         self.plantCollectionView.reloadData()
+        print("INSIDE THE THING")
         if (plants.isEmpty) {
             noPlantsImage.isHidden = false
         }

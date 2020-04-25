@@ -20,7 +20,6 @@ class PlantDetailViewController: UIViewController {
     // MARK: - OUTLETS & ACTIONS
     
     @IBOutlet weak var plantNameLabel: UILabel!
-    @IBOutlet weak var plantTextView: UITextView!
     @IBOutlet weak var overviewTitleLabel: UILabel!
     @IBOutlet weak var overviewLabel: UILabel!
     @IBOutlet weak var environmentTitleLabel: UILabel!
@@ -33,6 +32,9 @@ class PlantDetailViewController: UIViewController {
         let db = Firestore.firestore()
         let userID = (Auth.auth().currentUser?.uid)!
         db.collection("users").document(userID).collection("plants").document(plantNameLabel.text!).delete()
+        reload = true
+        NotificationCenter.default.post(name: NSNotification.Name("load"), object: nil)
+        performSegue(withIdentifier: "deletePlant", sender: self)
     }
     
     
@@ -53,7 +55,6 @@ class PlantDetailViewController: UIViewController {
         phTitleLabel.font = UIFont(name: "Larsseit-Bold", size: 19)
         pHLabel.font = UIFont(name: "Larsseit-Medium", size: 17)
         deleteButton.titleLabel?.font = UIFont(name: "Larsseit-Bold", size: 16)
-        plantTextView.layer.cornerRadius = 10
         overviewLabel.setLineHeight(lineHeight: 7.0)
         environmentLabel.setLineHeight(lineHeight: 7.0)
         pHLabel.setLineHeight(lineHeight: 7.0)
@@ -110,11 +111,6 @@ class PlantDetailViewController: UIViewController {
                 phTitleLabel.text = ""
                 pHLabel.text = ""
             }
-            let jpgs: Elements = try doc.select("img[src$=.jpg]")
-            let image = "<img src='../user/images/PFAF_Icon/H4.jpg'/>"
-            print("IMAGE", image)
-                //"<img src=\'" + jpgs[4] + "\'/>"
-            plantTextView.attributedText = image.htmlToAttributedString
         } catch Exception.Error(type: let type, Message: let message) {
             print(type)
             print(message)

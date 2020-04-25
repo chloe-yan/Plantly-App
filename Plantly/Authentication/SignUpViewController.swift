@@ -81,7 +81,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func nameTextFieldEndEditing(_ sender: Any) {
-        nameLabel.isHidden = true
+        nameLabel.isHidden = false
         nameTextField.placeholder = "Name"
         nameTextField.underlinedSignUp(color: UIColor.systemGray, type: "name")
     }
@@ -93,7 +93,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func emailTextFieldEndEditing(_ sender: Any) {
-        emailLabel.isHidden = true
+        emailLabel.isHidden = false
         emailTextField.placeholder = "Email"
         emailTextField.underlinedSignUp(color: UIColor.systemGray, type: "email")
     }
@@ -105,7 +105,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func passwordTextFieldEndEditing(_ sender: Any) {
-        passwordLabel.isHidden = true
+        passwordLabel.isHidden = false
         passwordTextField.placeholder = "Password"
         passwordTextField.underlinedSignUp(color: UIColor.systemGray, type: "password")
     }
@@ -117,7 +117,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func confirmPasswordTextFieldEndEditing(_ sender: Any) {
-        confirmPasswordLabel.isHidden = true
+        confirmPasswordLabel.isHidden = false
         confirmPasswordTextField.placeholder = "Confirm password"
         confirmPasswordTextField.underlinedSignUp(color: UIColor.systemGray, type: "confirm password")
     }

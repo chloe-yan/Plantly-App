@@ -26,38 +26,23 @@ class AddJournalEntryNotesViewController: UIViewController {
         let db = Firestore.firestore()
         let userID = (Auth.auth().currentUser?.uid)!
         entryReload = true
-        
+        reloadEntries = true
         let date = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
-        let unformattedDate = dateFormatter.string(from: date)
-        let entryDate = unformattedDate.replacingOccurrences(of: "/", with: " ")
+        let calendar = Calendar.current
+        var entryDate = ""
+        entryDate += date.monthAsString()
+        entryDate += " " + String(calendar.component(.day, from: date))
+        entryDate += ", " + String(calendar.component(.year, from: date))
         print(entryDate)
+        print("JOJRNAL", journalPlant)
         
-        if(notesTextView.text == nil) {
+        if (notesTextView.text == nil) {
             notesTextView.text = " "
         }
         
-        let storage = Storage.storage()
-        let storageRef = storage.reference()
-        let data = Data()
-        let plantRef = storageRef.child("images/" + unformattedDate + ".jpg")
-        
-        let uploadTask = plantRef.putData(data, metadata: nil) { (metadata, error) in
-          guard let metadata = metadata else {
-            // Error occurred
-            return
-          }
-          let size = metadata.size
-          plantRef.downloadURL { (url, error) in
-            guard let downloadURL = url else {
-              // Error occurred
-              return
-            }
-          }
-        }
+        uploadImagePic(image: journalImage, name: entryDate, filePath: userID + "/" + journalPlant + "/" + entryDate + ".jpg")
 
-        db.collection("users").document(userID).collection("journals").document(journalPlant).collection("entries").document(entryDate).setData(["color": (Int.random(in: 1 ... 4)), "date": "entryDate", "notes": notesTextView.text!]) { err in
+        db.collection("users").document(userID).collection("journals").document(journalPlant).collection("entries").document(entryDate).setData(["color": (Int.random(in: 1 ... 4)), "date": entryDate, "notes": notesTextView.text!, "detected": results]) { err in
         if let err = err {
             print("Error writing document: \(err)")
         } else {
@@ -95,4 +80,38 @@ class AddJournalEntryNotesViewController: UIViewController {
         notesTextView.inputAccessoryView = toolbar
     }
     
+    func uploadImagePic(image: UIImage, name: String, filePath: String) {
+        guard let imageData: Data = image.jpegData(compressionQuality: 0.1) else {
+            return
+        }
+
+        let metaDataConfig = StorageMetadata()
+        metaDataConfig.contentType = "image/jpg"
+
+        let storageRef = Storage.storage().reference(withPath: filePath)
+
+        storageRef.putData(imageData, metadata: metaDataConfig){ (metaData, error) in
+            if let error = error {
+                print(error.localizedDescription)
+
+                return
+            }
+
+            storageRef.downloadURL(completion: { (url: URL?, error: Error?) in
+                print(url?.absoluteString) // <- Download URL
+            })
+        }
+    }
+    
+}
+
+
+// MARK: - EXTENSIONS
+
+extension Date {
+    func monthAsString() -> String {
+        let df = DateFormatter()
+        df.setLocalizedDateFormatFromTemplate("MMM")
+        return df.string(from: self)
+    }
 }

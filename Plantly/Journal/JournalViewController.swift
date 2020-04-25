@@ -16,7 +16,7 @@ import FirebaseDatabase
 var journalReload = true
 
 
-class JournalViewController: UIViewController, UIImagePickerControllerDelegate {
+class JournalViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     
     // MARK: - OUTLETS & ACTIONS
@@ -61,10 +61,15 @@ class JournalViewController: UIViewController, UIImagePickerControllerDelegate {
         // From JournalDetailViewController
     }
     
+    @IBAction func unwindResults(_ segue:UIStoryboardSegue) {
+        // From ResultsViewController
+    }
+    
     
     // MARK: - VARIABLES
     
-    var imagePicker = UIImagePickerController()
+    var imagePicker: UIImagePickerController!
+    var plantImage: UIImage!
     
     
     // MARK: - PAGE SETUP
@@ -82,18 +87,27 @@ class JournalViewController: UIViewController, UIImagePickerControllerDelegate {
         journalCollectionView.dataSource = self
         journalCollectionView.delegate = self
         noJournalsLabel.isHidden = true
-        if (journalReload) {
+        if (journalReload || journals.isEmpty) {
             Journal.getJournalEntries()
         }
         journalReload = false
+        print("JOURNALLL", journals)
     }
     
     
     // MARK: - FUNCTIONS
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "photoObtainedJournal" {
+            if let vc = segue.destination as? ResultsViewController {
+                vc.image = plantImage
+            }
+        }
+    }
+    
     func getImage(fromSourceType sourceType: UIImagePickerController.SourceType) {
         
-        // Checks if source type is available
+        // Check if source type is available
         if UIImagePickerController.isSourceTypeAvailable(sourceType) {
             
             imagePicker =  UIImagePickerController()
@@ -101,6 +115,14 @@ class JournalViewController: UIViewController, UIImagePickerControllerDelegate {
             imagePicker.sourceType = sourceType
             self.present(imagePicker, animated: true, completion: nil)
         }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        imagePicker.dismiss(animated: true) {
+            print("THERE")
+            self.performSegue(withIdentifier: "photoObtainedJournal", sender: self)
+        }
+        plantImage = info[.originalImage] as? UIImage
     }
     
     @objc func loadList(notification: NSNotification) {

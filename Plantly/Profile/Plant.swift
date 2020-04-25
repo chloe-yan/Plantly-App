@@ -40,6 +40,7 @@ class Plant {
         //db.collection("plants").document(userID)
         let userID = (Auth.auth().currentUser?.uid)!
         plants = []
+        NotificationCenter.default.post(name: NSNotification.Name("load"), object: nil)
         db.collection("users").document(userID).collection("plants").getDocuments { (snapshot, error) in
             for document in snapshot!.documents {
                 NotificationCenter.default.post(name: NSNotification.Name("load"), object: nil)

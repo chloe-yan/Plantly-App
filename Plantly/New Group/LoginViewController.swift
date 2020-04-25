@@ -61,13 +61,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func emailTextFieldEndEditing(_ sender: Any) {
-        emailLabel.isHidden = true
+        emailLabel.isHidden = false
         emailTextField.placeholder = "Email"
         emailTextField.underlined(color: UIColor.systemGray, isPassword: false)
     }
     
     @IBAction func passwordTextFieldEndEditing(_ sender: Any) {
-        passwordLabel.isHidden = true
+        passwordLabel.isHidden = false
         passwordTextField.placeholder = "Password"
         passwordTextField.underlined(color: UIColor.systemGray, isPassword: true)
     }
@@ -158,10 +158,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // Keyboard functionality
     @objc func doneButtonAction() {
-        passwordLabel.isHidden = true
+        passwordLabel.isHidden = false
         passwordTextField.placeholder = "Password"
         passwordTextField.underlined(color: UIColor.systemGray, isPassword: true)
-        emailLabel.isHidden = true
+        emailLabel.isHidden = false
         emailTextField.placeholder = "Email"
         emailTextField.underlined(color: UIColor.systemGray, isPassword: false)
         self.view.endEditing(true)

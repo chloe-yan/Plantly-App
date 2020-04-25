@@ -39,7 +39,7 @@ class Journal {
         let db = Firestore.firestore()
         let userID = (Auth.auth().currentUser?.uid)!
         journals = []
-        db.collection("journals").document(userID)
+        NotificationCenter.default.post(name: NSNotification.Name("load"), object: nil)
         db.collection("users").document(userID).collection("journals").getDocuments { (snapshot, error) in
             for document in snapshot!.documents {
                 let background: String = document.get("background")! as! String

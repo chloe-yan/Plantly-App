@@ -14,6 +14,7 @@ import FirebaseAuth
 
 var selectedIndexJ: Int = 0
 var selectedIndexEntry: Int = 0
+var reloadEntries = true
 
 
 class JournalDetailViewController: UIViewController {
@@ -31,6 +32,9 @@ class JournalDetailViewController: UIViewController {
         let db = Firestore.firestore()
         let userID = (Auth.auth().currentUser?.uid)!
         db.collection("users").document(userID).collection("journals").document(titleLabel.text!).delete()
+        journalReload = true
+        NotificationCenter.default.post(name: NSNotification.Name("load"), object: nil)
+        performSegue(withIdentifier: "deleteJournal", sender: self)
     }
     
     @IBAction func unwindToDetailJournal(_ segue:UIStoryboardSegue) {
@@ -41,21 +45,47 @@ class JournalDetailViewController: UIViewController {
         // From AddJournalEntryNotesViewController
     }
     
+    @IBAction func unwindUnitToDetailJournal(_ segue:UIStoryboardSegue) {
+        // From JournalUnitViewController
+    }
+    
     
     // MARK: - PAGE SETUP
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(loadList(notification:)), name: NSNotification.Name(rawValue: "load"), object: nil)
+        entriesCollectionView.dataSource = self
+        entriesCollectionView.delegate = self
         titleLabel.text = journals[selectedIndexJ].name
         titleLabel.font = UIFont(name: "Larsseit-Bold", size: 25)
         deleteButton.titleLabel!.font = UIFont(name: "Larsseit-Bold", size: 16)
         addNewEntryButton.titleLabel!.font = UIFont(name: "Larsseit-Bold", size: 15)
         noEntriesLabel.font = UIFont(name: "Larsseit-Medium", size: 17)
         addNewEntryButton.layer.cornerRadius = 25
+        plantEntry = titleLabel.text!
+        journalPlant = titleLabel.text!
+        noEntriesLabel.isHidden = true
+        if (reloadEntries || entries.isEmpty) {
+            Entry.getJournalEntries()
+        }
+        reloadEntries = false
     }
     
-}
 
+    // MARK: - FUNCTIONS
+
+    @objc func loadList(notification: NSNotification) {
+        self.entriesCollectionView.reloadData()
+        if (entries.isEmpty) {
+            noEntriesLabel.isHidden = false
+        }
+        if (!entries.isEmpty) {
+            noEntriesLabel.isHidden = true
+        }
+    }
+
+}
 
 // MARK: - EXTENSIONS
 
