@@ -41,6 +41,7 @@
 		D1A8BB34243FB1F5008592F5 /* PlantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A8BB33243FB1F5008592F5 /* PlantDetailViewController.swift */; };
 		D1ABB4EF243FF5950094FA73 /* AddJournalEntryNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1ABB4EE243FF5950094FA73 /* AddJournalEntryNotesViewController.swift */; };
 		D1C14FBD2453BFF300D32B6B /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C14FBC2453BFF300D32B6B /* Annotation.swift */; };
+		D1C14FBF245AD3C900D32B6B /* PlantNutrientDeficiencyClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = D1C14FBE245AD3C800D32B6B /* PlantNutrientDeficiencyClassifier.mlmodel */; };
 		D1CB20BE2442A03B00B18758 /* JournalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CB20BD2442A03A00B18758 /* JournalDetailViewController.swift */; };
 		D1E288942444337500C11435 /* SegueFromLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E288932444337500C11435 /* SegueFromLeft.swift */; };
 		D1E28896244435B000C11435 /* SegueFromRight.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E28895244435B000C11435 /* SegueFromRight.swift */; };
@@ -83,6 +84,7 @@
 		D1A8BB33243FB1F5008592F5 /* PlantDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailViewController.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		D1ABB4EE243FF5950094FA73 /* AddJournalEntryNotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJournalEntryNotesViewController.swift; sourceTree = "<group>"; };
 		D1C14FBC2453BFF300D32B6B /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
+		D1C14FBE245AD3C800D32B6B /* PlantNutrientDeficiencyClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = PlantNutrientDeficiencyClassifier.mlmodel; path = ../../../../Desktop/PlantNutrientDeficiencyClassifier.mlmodel; sourceTree = "<group>"; };
 		D1CB20BD2442A03A00B18758 /* JournalDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalDetailViewController.swift; sourceTree = "<group>"; };
 		D1E288932444337500C11435 /* SegueFromLeft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueFromLeft.swift; sourceTree = "<group>"; };
 		D1E28895244435B000C11435 /* SegueFromRight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueFromRight.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				D1E28895244435B000C11435 /* SegueFromRight.swift */,
 				D18826D2241225660057CF8A /* SceneDelegate.swift */,
 				D1A590232453A2BE00DA5611 /* PlantDiseaseClassifier.mlmodel */,
+				D1C14FBE245AD3C800D32B6B /* PlantNutrientDeficiencyClassifier.mlmodel */,
 				D14A9CDD24430242003F9954 /* Authentication */,
 				D14A9CDB244301DB003F9954 /* Profile */,
 				D15F55F82450029F00E37307 /* Camera */,
@@ -373,6 +376,7 @@
 				D1A206CE24422730008ABC8A /* Journal.swift in Sources */,
 				D17037252446E8A600936E88 /* Entry.swift in Sources */,
 				D1A590242453A2BE00DA5611 /* PlantDiseaseClassifier.mlmodel in Sources */,
+				D1C14FBF245AD3C900D32B6B /* PlantNutrientDeficiencyClassifier.mlmodel in Sources */,
 				D18C1F5F243C303F006E30DD /* AddPlantViewController.swift in Sources */,
 				D141ED532414AC9200DFE4C2 /* JournalViewController.swift in Sources */,
 				D1A8BB34243FB1F5008592F5 /* PlantDetailViewController.swift in Sources */,

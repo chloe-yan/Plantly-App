@@ -77,7 +77,7 @@ class MapViewController: UIViewController, UIImagePickerControllerDelegate, UINa
         DispatchQueue.main.async {
             self.locationManager.startUpdatingLocation()
         }
-        mapView.showsUserLocation = true
+        mapView.showsUserLocation = false
         
         NotificationCenter.default.addObserver(self, selector: #selector(loadList(notification:)), name: NSNotification.Name(rawValue: "loadMap"), object: nil)
         Annotation.getAnnotations()
@@ -95,15 +95,13 @@ class MapViewController: UIViewController, UIImagePickerControllerDelegate, UINa
     }
     
     @objc func loadList(notification: NSNotification) {
-        print("LOADINGLIST")
         print(annotations)
         if !annotations.isEmpty {
             for annotation in annotations {
                 let newAnnotation = MKPointAnnotation()
                 newAnnotation.coordinate = CLLocationCoordinate2D(latitude: annotation.latitude, longitude: annotation.longitude)
-                let array = annotation.detected.components(separatedBy: ": ")
-                newAnnotation.title = array[0]
-                newAnnotation.subtitle = array[1]
+                newAnnotation.title = annotation.detected
+                newAnnotation.subtitle = annotation.date
                 mapView.addAnnotation(newAnnotation)
             }
         }

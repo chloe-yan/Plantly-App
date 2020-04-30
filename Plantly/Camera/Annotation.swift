@@ -21,10 +21,11 @@ class Annotation {
     
     // MARK: - INITIALIZE
     
-    init(detected: String, longitude: Double, latitude: Double) {
+    init(detected: String, longitude: Double, latitude: Double, date: String) {
         self.detected = detected
         self.longitude = longitude
         self.latitude = latitude
+        self.date = date
     }
     
     
@@ -33,6 +34,7 @@ class Annotation {
     var detected = ""
     var longitude: Double
     var latitude: Double
+    var date: String
     
     
     // MARK: - FUNCTIONS
@@ -45,7 +47,8 @@ class Annotation {
                 let detected: String = document.get("detected")! as! String
                 let longitude: Double = document.get("longitude")! as! Double
                 let latitude: Double = document.get("latitude")! as! Double
-                let updatedData = Annotation(detected: detected, longitude: longitude, latitude: latitude)
+                let date: String = document.get("date")! as! String
+                let updatedData = Annotation(detected: detected, longitude: longitude, latitude: latitude, date: date)
                 annotations.append(updatedData)
                 NotificationCenter.default.post(name: NSNotification.Name("loadMap"), object: nil)
                 print(updatedData)
