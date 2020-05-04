@@ -25,7 +25,6 @@ class Plant {
         self.name = name
     }
     
-    
     // MARK: - VARIABLES
     
     var name = ""
@@ -36,6 +35,7 @@ class Plant {
     // MARK: - FUNCTIONS
    
     static func getPlants() {
+        
         let db = Firestore.firestore()
         //db.collection("plants").document(userID)
         let userID = (Auth.auth().currentUser?.uid)!

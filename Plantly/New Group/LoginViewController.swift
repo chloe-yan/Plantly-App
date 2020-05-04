@@ -25,7 +25,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var welcomeLabelCenterConstraint: NSLayoutConstraint!
     @IBOutlet weak var emailTextFieldCenterConstraint: NSLayoutConstraint!
-   // @IBOutlet weak var passwordTextFieldCenterConstraint: NSLayoutConstraint!
+    @IBOutlet weak var passwordTextFieldCenterConstraint: NSLayoutConstraint!
     @IBOutlet weak var loginButtonCenterConstraint: NSLayoutConstraint!
     
     @IBAction func loginButtonTapped(_ sender: Any) {
@@ -128,7 +128,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                        self?.view.layoutIfNeeded()
         }, completion: nil)
         
-        //passwordTextFieldCenterConstraint.constant = 0
+        passwordTextFieldCenterConstraint.constant = 0
         UIView.animate(withDuration: 0.8,
                        delay: 0.6, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7,
                        options: .curveEaseOut,
@@ -149,6 +149,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
       super.viewWillAppear(animated)
         welcomeLabelCenterConstraint.constant -= view.bounds.width
         emailTextFieldCenterConstraint.constant -= view.bounds.width
+        passwordTextFieldCenterConstraint.constant -= view.bounds.width
         loginButtonCenterConstraint.constant -= view.bounds.width
     }
     

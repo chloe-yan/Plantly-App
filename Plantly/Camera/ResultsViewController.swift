@@ -154,7 +154,12 @@ class ResultsViewController: UIViewController, CLLocationManagerDelegate {
                 fatalError("Unexpected runtime error.")
         }
         detectedLabel.text = plantDictionary[modelOutput.classLabel]
-        treatmentTextView.text = treatmentDictionary[modelOutput.classLabel]
+        let style = NSMutableParagraphStyle()
+        style.lineSpacing = 8
+        let attributes = [NSAttributedString.Key.paragraphStyle : style, NSAttributedString.Key.font : UIFont(name: "Larsseit-Medium", size: 18), NSAttributedString.Key.foregroundColor : UIColor(red: 0.29, green: 0.32, blue: 0.38, alpha: 1.00)]
+        
+        treatmentTextView.attributedText = NSAttributedString(string: treatmentDictionary[modelOutput.classLabel]!, attributes: attributes)
+        //treatmentTextView.text = treatmentDictionary[modelOutput.classLabel]
         var accuracy = modelOutput.classLabelProbs.first!.value
         var accuracy2 = modelOutput2.classLabelProbs.first!.value
         if (accuracy2 > accuracy) {

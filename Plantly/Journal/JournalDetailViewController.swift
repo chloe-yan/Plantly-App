@@ -67,9 +67,8 @@ class JournalDetailViewController: UIViewController {
         plantEntry = titleLabel.text!
         journalPlant = titleLabel.text!
         noEntriesLabel.isHidden = true
-        if (reloadEntries || entries.isEmpty) {
-            Entry.getJournalEntries()
-        }
+        entries = []
+        Entry.getJournalEntries()
         reloadEntries = false
     }
     
@@ -110,6 +109,8 @@ extension JournalDetailViewController: UICollectionViewDataSource, UICollectionV
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = entriesCollectionView.dequeueReusableCell(withReuseIdentifier: "EntryCollectionViewCell", for: indexPath) as! EntryCollectionViewCell
         let entry = entries[indexPath.item]
+        print("IP", indexPath)
+        print("ENTRY", entry)
         cell.entry = entry
         cell.alpha = 0
         cell.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)

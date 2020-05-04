@@ -51,9 +51,9 @@
 /* Begin PBXFileReference section */
 		279C963271A1845905FB3E95 /* Pods_Plantly.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Plantly.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBD781BB050C770FE1BB5CA8 /* Pods-Plantly.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plantly.release.xcconfig"; path = "Target Support Files/Pods-Plantly/Pods-Plantly.release.xcconfig"; sourceTree = "<group>"; };
-		D107BA2224404D99004835B0 /* Larsseit.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Larsseit.ttf; path = "../../../../Desktop/Design Assets/Larsseit.ttf"; sourceTree = "<group>"; };
-		D107BA2424404F7B004835B0 /* Larsseit-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Larsseit-Medium.ttf"; path = "../../../../Desktop/Design Assets/Larsseit-Medium.ttf"; sourceTree = "<group>"; };
-		D107BA2624404FA6004835B0 /* Larsseit Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Larsseit Bold.ttf"; path = "../../../../Desktop/Design Assets/Larsseit Bold.ttf"; sourceTree = "<group>"; };
+		D107BA2224404D99004835B0 /* Larsseit.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Larsseit.ttf; path = "../../../Design Assets/Larsseit.ttf"; sourceTree = "<group>"; };
+		D107BA2424404F7B004835B0 /* Larsseit-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Larsseit-Medium.ttf"; path = "../../../Design Assets/Larsseit-Medium.ttf"; sourceTree = "<group>"; };
+		D107BA2624404FA6004835B0 /* Larsseit Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Larsseit Bold.ttf"; path = "../../../Design Assets/Larsseit Bold.ttf"; sourceTree = "<group>"; };
 		D11BE357243C51E20067C328 /* PlantCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantCollectionViewCell.swift; sourceTree = "<group>"; };
 		D11BE359243CFCEE0067C328 /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
 		D141ED502414A13600DFE4C2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -80,11 +80,11 @@
 		D19ED8702415A85500B649B0 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D1A206CB244226EC008ABC8A /* JournalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalCollectionViewCell.swift; sourceTree = "<group>"; };
 		D1A206CD24422730008ABC8A /* Journal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journal.swift; sourceTree = "<group>"; };
-		D1A590232453A2BE00DA5611 /* PlantDiseaseClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = PlantDiseaseClassifier.mlmodel; path = ../../../../Desktop/PlantDiseaseClassifier.mlmodel; sourceTree = "<group>"; };
+		D1A590232453A2BE00DA5611 /* PlantDiseaseClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = PlantDiseaseClassifier.mlmodel; path = ../PlantDiseaseClassifier.mlmodel; sourceTree = "<group>"; };
 		D1A8BB33243FB1F5008592F5 /* PlantDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailViewController.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		D1ABB4EE243FF5950094FA73 /* AddJournalEntryNotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJournalEntryNotesViewController.swift; sourceTree = "<group>"; };
 		D1C14FBC2453BFF300D32B6B /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
-		D1C14FBE245AD3C800D32B6B /* PlantNutrientDeficiencyClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = PlantNutrientDeficiencyClassifier.mlmodel; path = ../../../../Desktop/PlantNutrientDeficiencyClassifier.mlmodel; sourceTree = "<group>"; };
+		D1C14FBE245AD3C800D32B6B /* PlantNutrientDeficiencyClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = PlantNutrientDeficiencyClassifier.mlmodel; path = ../PlantNutrientDeficiencyClassifier.mlmodel; sourceTree = "<group>"; };
 		D1CB20BD2442A03A00B18758 /* JournalDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalDetailViewController.swift; sourceTree = "<group>"; };
 		D1E288932444337500C11435 /* SegueFromLeft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueFromLeft.swift; sourceTree = "<group>"; };
 		D1E28895244435B000C11435 /* SegueFromRight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueFromRight.swift; sourceTree = "<group>"; };

@@ -21,6 +21,15 @@ class JournalUnitViewController: UIViewController {
     @IBOutlet weak var detectedLabel: UILabel!
     @IBOutlet weak var notesTitleLabel: UILabel!
     @IBOutlet weak var notesLabel: UILabel!
+    @IBOutlet weak var deleteButton: UIButton!
+    @IBAction func deleteButtonTapped(_ sender: Any) {
+        let db = Firestore.firestore()
+        let userID = (Auth.auth().currentUser?.uid)!
+        //db.collection("users").document(userID).collection("plants").document(plantNameLabel.text!).delete()
+        reload = true
+        NotificationCenter.default.post(name: NSNotification.Name("load"), object: nil)
+        performSegue(withIdentifier: "deletePlant", sender: self)
+    }
     
     
     // MARK: - PAGE SETUP
@@ -32,6 +41,7 @@ class JournalUnitViewController: UIViewController {
         detectedLabel.font = UIFont(name: "Larsseit-Medium", size: 18)
         notesTitleLabel.font = UIFont(name: "Larsseit-Bold", size: 18)
         notesLabel.font = UIFont(name: "Larsseit-Medium", size: 18)
+        deleteButton.titleLabel!.font = UIFont(name: "Larsseit-Bold", size: 18)
         plantImage.layer.cornerRadius = 15
         plantImage.clipsToBounds = true
         titleLabel.text = entries[selectedIndexEntry].date
@@ -66,21 +76,4 @@ class JournalUnitViewController: UIViewController {
            }
     }
 
-}
-
-extension UIImageView {
-    /*func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
-      URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
-   }
-   func downloadImage(from url: URL) {
-      getData(from: url) {
-         data, response, error in
-         guard let data = data, error == nil else {
-            return
-         }
-         DispatchQueue.main.async() {
-            self.image = UIImage(data: data)
-         }
-      }
-   }*/
 }

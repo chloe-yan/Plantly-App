@@ -61,6 +61,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                         }
                     }
                     // Transitions to home screen
+                    let userDefaults = UserDefaults.standard
+                    userDefaults.set(true, forKey: "signedin")
+                    userDefaults.synchronize()
                     UserDefaults.standard.set(true, forKey: "status")
                     let jVC = self.storyboard?.instantiateViewController(identifier: "jVC") as? JournalViewController
                     self.view.window?.rootViewController = jVC
